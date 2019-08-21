@@ -1,0 +1,82 @@
+\section{Description of the Main Variables}
+\phantomsection
+\label{App:vardef}
+\vspace{-1em}
+\bgroup
+\singlespacing
+
+Appendix \ref{App:vardef} describes the variables used in this study.
+Compustat and ExecuComp variables are measured at the fiscal year end immediately preceding the package deal-active date.
+
+\begin{center}
+	\centering
+    \footnotesize
+	\begin{longtable*}{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{.2 \textwidth} >{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{.55 \textwidth} >{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{.15 \textwidth}}
+        \toprule
+		\textbf{Variable} 	& \textbf{Description} & \textbf{Source} \\ \midrule
+		\endfirsthead
+		\multicolumn{3}{c}{...continued from previous page.} \\
+		\toprule
+		\textbf{Variable} 	& \textbf{Description} & \textbf{Source} \\ \midrule
+		\endhead
+		\midrule
+		\multicolumn{3}{c}{Continued on next page...} \\
+		\endfoot
+		\bottomrule
+		\endlastfoot
+        %
+        \multicolumn{3}{l}{\normalsize \textbf{\textit{Firm/Borrower Characteristics}} } \\ \addlinespace
+CMR Firm                                & Dummy equal to 1 if the firm has a CMR clause at some point during our sample period                                                                   & EDGAR                        \\
+Assets                                  & Book value of total assets (in millions, $ AT $)                                                                                                                           & Compustat                    \\
+Book Value of Equity                    & Total assets – total liabilities – preferred stock $(AT-LT-PSTK)$                                                                                               & Compustat                    \\
+Leverage                         & Ratio of total debt to total assets (Book Leverage) $(DLTT + DLC) / AT$                                                                                                                     & Compustat                    \\
+Operating CF  & Ratio of operating income before depreciation to lagged total assets  $(OIBDP/AT_{t-1})$       & Compustat                    \\
+Tangibility                      & Logged ratio of 1 plus net PP\&E to total assets $ Ln(1+PPENT/AT) $ & Compustat \\
+Market Cap                              & Equity value measured at most recent fiscal year end ($ PRCC\_F * CSHO $)                                                                                                              & Compustat                    \\
+MTB                                    & Ratio of Market Cap to Book Value of Equity, omitted for negative Book Equity        & Compustat                    \\
+Rated                                   & Dummy equal to 1 if borrower has a current credit rating                                                                                               & Compustat                    \\
+Z-Score                                 & Modified Altman's Z-score of the borrower: $(1.2 \times Working\ Capital + 1.4 \times Retained\ Earnings +3.3 \times Pretax\ Income + 0.999 \times Net\ Sales)/(Total\ Assets)$  & Compustat \\
+ROA  & Ratio of earnings before interest and taxes to lagged total assets  $(EBIT/AT_{t-1})$       & Compustat                    \\
+Tobin's Q                               & Ratio of market value of assets to book value of assets $ (AT - Book\ Value\ Equity + Market\ Cap)/AT $ & Compustat \\
+TSR 1 year                              & 1 year stock return including dividend payments                                                                                                                 & CRSP \\
+TSR 3 years                             & 3 year stock return including dividend payments                                                                                                                 & CRSP \\
+\% Insider (Ind.)                       & Fama-French 48 industry measure of the \% of CEO turnover replacements that come from inside the firm                                                   & \cite{Cremers_2014} \\
+Non-Compete Index                       & Ranking from 0 (least) to 9 (most) of how well enforced Non-compete clauses are at the state level. & \cite{Garmaise_2011} \\
+Low NC Enforcement                      & Dummy equal to 1 for firms headquartered in a state with \textit{Non-Compete Index} less than the sample median (4). & \cite{Garmaise_2011} \\
+%
+%
+\addlinespace
+\multicolumn{3}{l}{\normalsize \textbf{\textit{Manager Characteristics}} } \\ \addlinespace
+Founder CEO                             & Dummy equal to 1 if CEO tenure $\ge$ firm CRSP age                                                                                                     & ExecuComp / CRSP             \\
+CEO Ownership \%                        & Percent of outstanding firm shares owned by the CEO                                                                                                             & ExecuComp / Compustat        \\
+CEO High Ownership                      & Dummy equal to 1 if the CEO owns more than 5\% of outstanding firm shares                                                                              & ExecuComp / Compustat        \\
+CEO No Unvested Equity                        & Dummy equal to 1 if the CEO does not own unvested (or has no unearned) stock ($shrs\_unvest\_num$), option ($opts\_unex\_unexer$; $opts\_unex\_unearn$), and equity incentive plan share ($eip\_shrs\_unvest\_num$) & ExecuComp \\
+CEO Retirement Age                      & Dummy equal to 1 if CEO age is between 63 and 66 inclusive for the CEO turnover tests following \cite{Jenter_2015}, and 63 and 65 inclusive for the CMR tests following \cite{Jenter_2015a} & ExecuComp                    \\
+No Heir Apparent & Dummy equal to 1 if none of the top five executives (excluding the CEO) has president or COO in her title & ExecuComp \\
+CEO Age & Age of CEO at fiscal year end. & ExecuComp \\
+CEO Tenure & Number of months the CEO has held her current position as of package initiation date & ExecuComp / Dealscan  \\
+New CEO & Dummy equal to 1 if CEO Tenure is two years or less & ExecuComp  \\
+%
+%
+\addlinespace
+\multicolumn{3}{l}{\normalsize \textbf{\textit{Loan/Lender Characteristics}}} \\ \addlinespace
+CMR Clause                              & Dummy equal to 1 if the loan contract contains a CMR clause                                                                                            & EDGAR                        \\
+All-in spread drawn                     & Spread over LIBOR plus fees (basis points) of largest facility in package                                                                                                           & DealScan                     \\
+Scaled amount                           & Face value of facility in millions of US dollars of largest facility in package scaled by the firm's total assets        & DealScan / Compustat         \\
+Maturity                                & Maturity in months of largest facility in package                                                                                                                                  & DealScan                     \\
+Collateralized                          & Dummy equal to 1 if the loan is secured                                                                                                                & DealScan                     \\
+\# of Financial cov.                    & Number of financial covenants included in contract                                                                                                              & DealScan                     \\
+Perf. pricing                           & Dummy equal to 1 if the loan uses performance pricing                                                                                                  & DealScan                     \\
+Loan Purpose                            & Primary loan purposes of the largest facility in the package, e.g. Acquis. line, Equipment Purchase, etc. & DealScan   \\
+Loan Type                               & Loan type of the largest facility in the package, e.g., Revolver, Term Loan A, etc.  & DealScan   \\
+\% Lead Allocation                      & Percentage of facility amount held by lead arranger                                                                                                             & DealScan                     \\
+Local Lead                              & Dummy equal to 1 if the firm and lead lender are in the same state                                                                                              & DealScan                     \\
+Number of lenders                       & Number of lenders included in syndicate                                                                                                                         & DealScan                     \\
+\addlinespace
+\multicolumn{3}{l}{\normalsize \textbf{\textit{Macro Characteristics}}} \\ \addlinespace
+Credit Spread & The difference between the Moody's seasoned Baa and Aaa corporate bond yields & Federal Reserve Bank, St. Louis \\
+Term Spread & The difference between the 10-year and 2-year Treasury constant maturity yields  & Federal Reserve Bank, St. Louis \\
+%
+	\end{longtable*}
+\end{center}
+\egroup

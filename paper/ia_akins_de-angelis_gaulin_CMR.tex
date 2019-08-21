@@ -1,0 +1,860 @@
+\documentclass[12pt]{article}
+% !TeX encoding = utf8
+
+\input{./resources/includes}
+\RequirePackage[titletoc]{appendix}
+\externaldocument{./akins_de-angelis_gaulin_CMR}
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%
+% 888     888     d8888 8888888b.  8888888        d8888 888888b.   888      8888888888 .d8888b.
+% 888     888    d88888 888   Y88b   888         d88888 888  "88b  888      888       d88P  Y88b
+% 888     888   d88P888 888    888   888        d88P888 888  .88P  888      888       Y88b.
+% Y88b   d88P  d88P 888 888   d88P   888       d88P 888 8888888K.  888      8888888    "Y888b.
+%  Y88b d88P  d88P  888 8888888P"    888      d88P  888 888  "Y88b 888      888           "Y88b.
+%   Y88o88P  d88P   888 888 T88b     888     d88P   888 888    888 888      888             "888
+%    Y888P  d8888888888 888  T88b    888    d8888888888 888   d88P 888      888       Y88b  d88P
+%     Y8P  d88P     888 888   T88b 8888888 d88P     888 8888888P"  88888888 8888888888 "Y8888P"
+%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\def \USRVarTitle{Debt Contracting on Management}
+
+
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%
+% 8888888b.                                         888      888
+% 888   Y88b                                        888      888
+% 888    888                                        888      888
+% 888   d88P 888d888 .d88b.   8888b.  88888b.d88b.  88888b.  888  .d88b.
+% 8888888P"  888P"  d8P  Y8b     "88b 888 "888 "88b 888 "88b 888 d8P  Y8b
+% 888        888    88888888 .d888888 888  888  888 888  888 888 88888888
+% 888        888    Y8b.     888  888 888  888  888 888 d88P 888 Y8b.
+% 888        888     "Y8888  "Y888888 888  888  888 88888P"  888  "Y8888
+%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\begin{document}
+\phantomsection
+\addcontentsline{toc}{section}{Internet Appendix}
+
+
+
+\begin{appendices}
+
+\begin{center}%
+{\large \bf Internet Appendix for
+\vspace{12pt}
+\\ ``\USRVarTitle''
+\\ {\normalsize Simulated Data Replication Version}}
+
+\vspace{24pt}
+
+{BRIAN AKINS, DAVID DE ANGELIS, and MACLEAN GAULIN\vspace{-0.05cm}}%
+    \footnote{Citation format: Akins, Brian, David De Angelis, and Maclean Gaulin, Internet Appendix for ``\USRVarTitle,'' \emph{Journal of Finance} [DOI String].
+    Please note: Wiley-Blackwell is not responsible for the content or functionality of any additional information provided by the authors. Any queries (other than missing material) should be directed to the authors of the article.}
+\end{center}
+
+\vspace{12pt}
+
+\begin{abstract}\noindent
+This Internet Appendix provides additional description of our methodology, analyses, and tables supporting the main text.
+\end{abstract}
+
+
+
+\thispagestyle{empty}
+
+% Setting these in the head doesn't work.
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+\renewcommand{\thesection}{IA.\Alph{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+
+\setcounter{equation}{0}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+% Add "IA" to equation, figure and table numbers.
+\renewcommand{\theequation}{IA.\arabic{equation}}%
+\renewcommand{\thefigure}{IA.\arabic{figure}} \setcounter{figure}{0}
+\renewcommand{\thetable}{IA.\Roman{table}} \setcounter{table}{0}
+
+
+
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%
+%        d8888                                          888 d8b
+%       d88888                                          888 Y8P
+%      d88P888                                          888
+%     d88P 888 88888b.  88888b.   .d88b.  88888b.   .d88888 888 888  888
+%    d88P  888 888 "88b 888 "88b d8P  Y8b 888 "88b d88" 888 888 `Y8bd8P'
+%   d88P   888 888  888 888  888 88888888 888  888 888  888 888   X88K
+%  d8888888888 888 d88P 888 d88P Y8b.     888  888 Y88b 888 888 .d8""8b.
+% d88P     888 88888P"  88888P"   "Y8888  888  888  "Y88888 888 888  888
+%              888      888
+%              888      888
+%              888      888
+%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\clearpage
+\setcounter{page}{1}
+\doublespacing
+%\appendix
+
+\section{Description of the Database Construction}
+\label{IApp:mainvar}
+
+Section~\ref{IApp:mainvar} details the contract search and sample selection methodology.
+Our CMR data are gathered from the full text of the firms' debt contracts which are filed publicly by companies via the SEC's EDGAR system.
+To find these contracts, we merge Compustat and DealScan, and for the subsequent sample of firms in both datasets we identify their Central Index Key (CIK), which is the unique firm identifier assigned by the SEC.
+We then search through all of the 10-K, 10-Q, and 8-K filings associated with those CIKs to identify debt contracts.
+We use regular expressions to search for inexact phrases related to debt contracts within the header of the exhibit (defined as the first 5\% of the length of the document).
+The use of loose regular expressions allows for inexact wordings of the titles, which we believe results in a more comprehensive match given the variance in wording observed in our sample.
+Our search terms include the phrases used by \cite{Nini_2009}; however, we do not require a table of contents to be present. We drop this requirement because in reviewing contracts, we found that even full contracts do not always contain a table of contents.%
+    \footnote{Example: \href{http://www.sec.gov/Archives/edgar/data/5768/000110465903026261/a03-4850\_1ex10ddxi.htm}{www.sec.gov/Archives/edgar/data/5768/000110465903026261/a03-4850\_1ex10ddxi.htm}.}
+Unlike \cite{Nini_2009}, we attempt to include contract amendments that, in some cases, only include relevant changes rather than the full contract terms (and are missing a full table of contents).
+We make this decision based on anecdotal evidence from the court case detailed in Section~\ref{IApp:court_case}, in which a CMR clause was added in an amendment to an existing contract.
+Our contract search algorithm results in 59,719 contracts with which we merge the sample of DealScan packages.
+
+
+We merge the contracts from EDGAR with our DealScan sample based on the filing date of the contract in EDGAR and the date from DealScan.
+We require that the exhibit be filed within one month of the DealScan variables \textit{dealactivedate} or \textit{amendeddate}.
+If no contract is found, however, we expand the window to four months.
+We use this two-stage approach of expanding windows to allow for the change in SEC filing rules, as well as late filings (in violation).
+Prior to the 2004 rule change described below, firms typically filed debt contracts as exhibits included in the next 10-Q or 10-K.
+For example, on June 28, 2002, Dynamics Research Corporation entered into a loan contract that was filed as Exhibit 10.1 to Form 10-Q on August 14, 2002, more than one month later.%
+    \footnote{URL: \href{http://www.sec.gov/Archives/edgar/data/30822/000092701602004094/0000927016-02-004094-index.htm}{www.sec.gov/Archives/edgar/data/30822/000092701602004094/0000927016-02-004094-index.htm}.}
+Firms did have the option of filing the contracts as Item 5 of Form 8-K, but we observe very few of these cases.%(Carter and Soo, 1999)
+
+
+In 2004, the SEC amended its rules regarding 8-K filings.
+After this change, instruction B.1 of Item 1.01 for Form 8-K was amended to include material contracts as a triggering event for timely filings.
+This effectively moved the bulk of debt contracts from exhibits in quarterly or annual reports to Item 1.01 filings in 8-Ks.
+This affected the filing timing, as 8-Ks are required to be submitted to the SEC within four business days of the triggering event, in this case entering into a debt contract.%
+    \footnote{See \href{https://www.sec.gov/about/forms/form8-k.pdf}{www.sec.gov/about/forms/form8-k.pdf}.}
+Rather than employ different matching pre and post 2004, we use the relaxed matching restrictions to capture late filings that we might otherwise miss.
+This decision trades the cost of manually filtering out false positives for the increased breadth of contracts found.
+
+
+The merging of DealScan and EDGAR fillings results in 23,572 potential matches for 15,501 DealScan contracts.
+The duplicates are primarily due to multiple contract exhibits in one filing.
+For example, on July 17, 1997, Atwood Oceanics Inc. entered into a \$125 million revolving credit facility with a syndicate led by Bank One, Texas.%
+    \footnote{URL: \href{http://www.sec.gov/Archives/edgar/data/8411/0000008411-97-000031.txt}{www.sec.gov/Archives/edgar/data/8411/0000008411-97-000031.txt}.}
+The filings consist of two exhibits, EX-99.1 and EX-99.2, both of which match our criteria for a credit agreement.
+The first exhibit is a \$100 million revolving credit facility, and the second is a \$25 million revolving credit facility, which DealScan jointly classifies as package ID 37077 with a deal amount of \$125 million.
+These 15,501 contracts comprise the full sample of packages for the extent of our analyses, which equates to 57\% of the 27,037 potential DealScan packages.
+We have a higher contract match rate than the 40\% of \cite{Nini_2009}, likely due to our more relaxed search requirements and time period differences.
+
+
+To derive our sample of contracts containing CMR clauses, we search the potential matches using loose regular expressions for the following terms (and all conjugations and plural forms thereof): \textit{change}, \textit{replace}, \textit{terminate}, \textit{nominate}, \textit{fire}, \textit{death}, \textit{remove}, \textit{switch}, \textit{modify}, \textit{dismiss}, or \textit{pass away}.
+We then require these terms to be succeeded in the paragraph by the following terms (and all conjugations and plural forms thereof): \textit{management}, \textit{executive}, \textit{officer}, \textit{chief}, \textit{president}, \textit{leadership}, \textit{head}, \textit{board member}, \textit{chair}, \textit{chairman}, \textit{owner}, \textit{treasurer}, \textit{founder}, \textit{partner}, \textit{counsel}, \textit{lawyer}, \textit{director}, \textit{controller}, \textit{VP}, \textit{CEO}, \textit{CFO}, \textit{COO}, \textit{CIO}, \textit{Mrs}, \textit{Mr}, \textit{Dr}, or \textit{Ph.D}.
+
+
+These search requirements result in 16,207 paragraphs, which we then individually examine to remove false positive results.
+The hand checking was performed independently by two research assistants.
+They were asked to verify that the paragraphs concern or suggest any limitation on management change.
+The research assistants filtered the sample down to approximately 2,100 paragraphs that were plausibly related to restricting changes in management.
+We conducted the final verification by reading the matched paragraph in the context of the full contract to ensure that the clause is contractually binding, which typically consisted of inclusion in the Negative Covenants or Default Event sections of the contract.
+The two most common paragraphs eliminated in this verification stage were those requiring notice of, as opposed to restricting, a change in management, and those concerning conditions precedent.%
+    \footnote{Conditions precedent require that conditions be met previous to the closing date of the contract, but do not extend through the term of the loan. For example, the lenders might require that the CEO with whom the contract was negotiated remain in office on the date when the final version is signed. We do not consider this to be a strongly binding CMR and thus exclude such clauses from our CMR criteria.}
+
+
+This last verification resulted in 565 contracts containing CMR clauses.
+We verified that the contracts match the DealScan packages by comparing the date of the contract, the syndicate members, the amount of the package, and in some cases the maturity (when the EDGAR contract contained only one facility in a package).
+Of these, 33 did not match the data in DealScan and were dropped from the sample.
+The final sample of contracts with CMR clauses consists of 532 packages across 376 firms.
+This represents 8.5\% of the full sample of firms in the DealScan/Compustat universe with valid CIKs matched.
+
+
+
+\section{CMR Clause Characteristics}
+\label{IApp:cmr_characteristics}
+
+This section describes the characteristics of CMR clauses.
+We break down these clauses across four dimensions in Table~\ref{IAtab:abcdtype}.
+\textit{Clause Restrictiveness} (category A) describes how restrictive the contracts are, from automatic default for any management change to requiring ex-post lender authorization for a change.
+\textit{Replacement Approval} (category B) describes whether the contract explicitly requires lender approval for any replacements.
+\textit{Source} (category C) describes whether the clause specifies that the restriction applies to termination by the board, to managers voluntarily leaving, or to both/unspecified.
+\textit{Management Definition} (category D) describes the people and positions the CMR clause explicitly references.
+Categories A1-A4, C1-C3, and D1-D4 are each mutually exclusive and collectively exhaustive for contracts but not for firms and banks because some firms and banks have multiple contracts with different clause types, i.e., one firm can be in both A1 and A2.
+
+
+We categorize the clauses into four levels of restrictiveness.
+The most restrictive CMR clauses, which account for 30\% of the sample, stipulate that any change in management unconditionally causes default (type A1).
+Nine percent of the clauses constrain a change in management but specify the conditions under which the change will not trigger a default, typically allowing for death or disability (type A2).
+In all but six cases, these covenants also specify that the lenders must approve the subsequent replacement.
+Twenty six percent of the clauses specify that firms must receive lender approval prior to any management change (type A3).
+The least restrictive clauses, comprising 35\% of the sample, stipulate that borrowers must acquire lender approval after a change in management occurs, typically within a time period ranging from 30 days to half a year (type A4).
+Note that this classification also captures the extent to which the clause aims to retain current management (as opposed to having selection rights over a replacement).
+
+
+The \textit{Replacement Approval} category consists of two clause types, with 48\% of the sample explicitly requiring lender approval over any replacement (type B1).
+The complement (type B2) is omitted for brevity.
+Eight percent and 12\% of the contracts with A1 and A3 types have clauses with type B1.
+This contrasts with clause types A2 and A4, which are 88\% and 99\% type B1, respectively.
+
+The \textit{Source} category consists of three CMR types.
+The majority (type C1) use either general or all-encompassing terms, such as ``any change'' or ``cease for any reason.''
+Clauses restricting the dismissal of managers, which typically use language like ``shall not remove,'' comprise 9\% of the sample (type C2).
+Clauses restricting manager-initiated departure or retirement comprise 9\% of the sample (type C3); these clauses use language like ``shall resign.''
+
+
+The \textit{Management Definition} category consists of four types, which arise from CMR clauses explicitly naming individuals, positions, or both.
+Clauses that name individuals (but not their position) (D1), that only name positions (D2), or that name both (D3) comprise 29\%, 9\%, and 21\% of the CMR sample, respectively.
+Clauses that are general, which means they include neither names nor specific positions (e.g., ``change in management''), make up the remaining 41\% of the sample.
+The CMR covers the CEO in almost all of our sample contracts (96\%).
+
+
+
+\subsection{CMR Inclusion and Human Capital: A More Granular Analysis}
+This subsection discusses additional results from our tests using the granularity of the CMR clauses in our sample.
+In Table~\ref{IAtab:granular_humancap}, we split CMR clauses according to their level of restrictiveness (using categories from Table~\ref{IAtab:abcdtype}) and study how these categories relate to our human capital risk proxies.
+The odd specifications include as the dependent variable an indicator equal to one if the CMR is of type A1, A2, or A3, and zero otherwise.
+Likewise the even specifications include as the dependent variable an indicator equal to one if the CMR is of type A4, and zero otherwise.
+This allows us to examine whether our proxies for human capital risk better predict CMR inclusion when lenders include language prohibiting any unauthorized changes in management, and thus helps to capture whether lenders' intentions when using a CMR are more about retention or selection rights over replacement.
+
+
+Our results generally support the interpretation that human capital risk is important to banks (see results in Specifications (1) and (3) specifically).
+When the CMR clause prohibits unauthorized changes in management (types A1, A2, and A3), the first two proxies for human capital risk  (\textit{Founder CEO} and \textit{\% Insider(Ind.)}) are strongly related to CMR inclusion.
+However, when the CMR contains language requiring approval of the change in management only ex-post, the human capital risk proxies are not (less) predictive of CMR inclusion for the first two human capital risk proxies (for the the third proxy).%
+    \footnote{The number of observations used in Specifications (2) and (6) is lower because of the fixed effects used and the sparsity of the A4 clause type, which leads to perfect identification and subsequent omission.}
+Taken together, this evidence suggests that lenders explicitly intend to mitigate the risk of losing valuable human capital.
+
+
+
+
+\section{Testing the Relation between Loan Pricing and CMR Inclusion: Empirical Methodology}
+ \label{IApp:pricing_description}
+
+This section describes in greater detail our methodology for testing the relation between loan pricing and CMR inclusion.
+We follow the estimation procedure used in \cite{Miller_2012} and \cite{Bradley_2015}, which is based on the methodology set forth in \cite{Lee_1978}.
+We assume that the negotiation process simultaneously determines prices and CMR inclusion.
+Thus, the decision to include a CMR is determined by the costs of non-inclusion exceeding the benefits of inclusion, as shown below in equation (1): %
+%
+\begin{equation}
+Par*Yield_{NoCMR} > Par * Yield_{CMR} + Cost\ of\ CMR
+\end{equation}%
+%
+where \textit{Par} is the loan amount and $Yield_{NoCMR}$ and $Yield_{CMR}$ are the rates charged for comparable contracts that differ only in the inclusion of a CMR.
+When the cost a bank imposes through the yield for a contract without the restriction is higher than the firm's cost of holding to the restriction, the firm will choose to pay a lower yield and accept the inclusion of a CMR.
+Alternatively, this can be expressed as $Yield_{NoCMR} - Yield_{CMR} > Cost\ of\ CMR / Par$, which is to say that the yield difference is greater than the cost of the covenant.
+
+
+We use a latent variable approach to test this inequality, assuming that the costs of covenant inclusion can be approximated by a vector of firm characteristics: $CMR\ Cost \sim Z \beta_{cc} + \varepsilon_{cc}$: %
+%
+\begin{equation}
+CMR^* = \alpha + \delta (LogYield_{NoCMR} - LogYield_{CMR} ) + Z \beta_{c} + \varepsilon
+\end{equation}%
+%
+where $CMR^*$ is an indicator variable equal to 1 if the covenant is included, $\beta_c = -\beta_{cc}$, and $\delta$ relates to the relative cost of the covenant to the firm.
+To estimate the yields in equation (2), we specify yields conditional on outcome, as shown in equations (3) and (4):
+\begin{align}
+LogYield_{NoCMR,i} &= X_{NoCMR,i} \beta_{NoCMR} + \nu_{NoCMR,i} \\
+LogYield_{CMR,i} &= X_{CMR,i} \beta_{CMR} + \nu_{CMR,i}
+\end{align}
+Equations (2)--(4) cannot be estimated directly because the yield equations are conditional on the covenant inclusion outcome, which results in inconsistent estimates, as discussed in \cite{Heckman_1979}.
+To account for this, \cite{Lee_1978} uses a modified version of the Heckman correction to estimate the expected yields, allowing for unbiased estimates of the difference.
+This is done by predicting the covenant inclusion decision for the full sample by substituting equations (3) and (4) into equation (2) (effectively the first stage of the Heckman correction): %
+%
+\begin{align}
+CMR^*_i = \alpha + X_i \theta + Z_i \xi + \zeta_i
+\end{align}%
+%
+where $\theta = \delta (\beta_{NoCMR} - \beta_{CMR})$ and $\zeta_i = \delta (\nu_{NoCMR,i} - \nu_{CMR,i}) + \varepsilon_{i}$.
+We use the predicted value of covenant inclusion $\widehat{CMR^{*}_{i}} = X_i \theta + Z_i \xi$ to derive the inverse mills ratios (IMRs), which are defined as $IMR_{CMR,i} = -\phi (\widehat{CMR^{*}_{i}}) / \Phi(\widehat{CMR^{*}_{i}})$ when the CMR covenant is included in a contract, and as $IMR_{NoCMR,i} = \phi (\widehat{CMR^{*}_{i}}) / \left( 1 - \Phi(\widehat{CMR^{*}_{i}}) \right)$ when it is not, where $\phi$ is the probability density function and $\Phi$ is the cumulative density function of a normal distribution.
+The IMRs are used to estimate the unbiased yields, as shown in equations (6) and (7):
+\begin{align}
+LogYield_{NoCMR,i} &= X_{NoCMR,i} \beta_{NoCMR} + IMR_{NoCMR,i} + \nu_{NoCMR,i} \\
+LogYield_{CMR,i} &= X_{CMR,i} \beta_{CMR} + IMR_{CMR,i} + \nu_{CMR,i}
+\end{align}
+
+The second stage estimates the yield conditionally on the inclusion or exclusion of the CMR covenant.
+Therefore, the variables that affect the CMR inclusion decision in the second stage but not the pricing conditional on inclusion in the first stage can be excluded from X and used as instruments in Z for identification.
+The estimates for the differences in yield are then calculated for the whole sample as:%
+%
+\begin{align}
+\widehat{LogYield}_{NoCMR,i} - \widehat{LogYield}_{CMR,i} &= X_{i} \left( \hat{\beta}_{NoCMR} - \hat{\beta}_{CMR} \right)
+\end{align}
+This in turn is substituted into equation (2) to derive the unbiased estimate of $\delta$: %
+%
+\begin{align}
+CMR^* &= \alpha + \delta \left(\widehat{LogYield}_{NoCMR} - \widehat{LogYield}_{CMR}\right) + Z\beta_c + \varepsilon
+\end{align}%
+%
+which represents our final specification.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Examples of Change of Management Restriction Clauses}
+ \label{IApp:cmr_examples}
+
+This section illustrates the construction of our CMR sample via five examples extracted from debt contracts in our sample.
+The italicized portions represent the text matched from the search program.
+
+\skipline
+
+
+\noindent
+\textbf{Felcor Suite Hotels Incorporated}, November 14, 1996, \$250,000,000 par amount:
+\begin{quote}
+\singlespacing \vspace{-8pt}
+ARTICLE VII NEGATIVE COVENANTS [\dots]\\
+7.14. Management Continuity. The Borrower acknowledges that the Lenders have made their determination to enter into this Agreement and the transactions contemplated herein on the basis of reliance upon the experience, expertise and reputations of Messrs. Hervey A. Feldman and Thomas J. Corcoran, Jr. as experts in the ownership and asset management of Suite Hotels, and the Borrower will not suffer or permit its business to be without the active management of at least one such Person, provided that, in the event of death, incapacitation or dismissal of both Messrs. Hervey A. Feldman and Thomas J. Corcoran, Jr. a \textit{replacement management} team shall be appointed for the Borrower, such team to be (i) proposed by the Borrower within 120 days of the event referred to above, and (ii) approved by the Majority Lenders in their sole and absolute discretion.
+\end{quote}
+
+% \clearpage
+\noindent
+\textbf{Natural Gas Services Group Incorporated}, December 16, 2010, \$20,000,000 par amount:
+\begin{quote}
+\singlespacing \vspace{-8pt}
+ARTICLE VI Negative Covenants  [\dots]\\
+Section 6.05 Nature of Business; Management. Neither Borrower nor any of its Subsidiaries will (a) change the nature of its business in any material respect or enter into any business which is substantially different from the business in which it is presently engaged, other than any Permitted Other Business Lines, or (b) permit a \textit{change in the Chief Executive Officer} and/or President of the Borrower.
+\end{quote}
+
+
+\noindent
+\textbf{Birner Dental Management Services}, March 28, 2002, \$6,000,000 par amount:
+\begin{quote}
+\singlespacing \vspace{-8pt}
+6. NEGATIVE COVENANTS  [\dots]\\
+m. \textit{Change in Management}. Borrower shall not permit any Change in Management.  [\dots]\\
+``Change in Management'' shall mean any change in the management positions of or the acceptance of a resignation or other termination, without Lender's prior written consent, of any of the following officers of Borrower: Dennis Genty, Fred Birner or Mark Birner.
+\end{quote}
+
+
+\noindent
+\textbf{Telespectrum Worldwide Incorporated}, January 24, 1997, \$70,000,000 par amount:
+\begin{quote}
+\singlespacing \vspace{-8pt}
+SECTION 7. NEGATIVE COVENANTS:  [\dots]\\
+7.11 \textit{Change in Executive Management}: Borrowers shall not remove or replace any Person who is a member of Executive Management without the prior written consent of the Majority Lenders, such consent not to be unreasonably withheld. In the event of the death or any member of Executive Management, Borrowers shall have ninety (90) days to replace such Person, and any such replacement shall be acceptable to the Majority Lenders in their reasonable discretion.
+\end{quote}
+
+
+\noindent
+\textbf{St. Mary Land \& Exploration Co.}, June 30, 1998, \$200,000,000 par amount:
+\begin{quote}
+\singlespacing \vspace{-8pt}
+Section 8.1. Events of Default. Each of the following events constitutes an Event of Default under this Agreement:  [\dots]\\
+(l) Any \textit{Change in Management} occurs;  [\dots]\\
+``Change of Management'' means that Mark A. Hellerstein shall cease to act as President and chief executive officer of Borrower or that Ronald D. Boone shall cease to be Executive Vice President and chief operating officer of Borrower.
+\end{quote}
+
+
+
+
+
+
+
+
+\section{Court Case -- State National Bank v. Farah Manufacturing Company}
+ \label{IApp:court_case}
+
+The court case between Farah Manufacturing Company and State National Bank (as well as other lenders) involves a syndicate of lenders who enforced a CMR clause by replacing the CEO.
+The jury found that the bank committed ``tortious interference'' when it used the threat of default under the CMR clause to prevent a change in management that was potentially beneficial to shareholders.
+The contract in question contained the following change of management restriction clause in item (g) of the default section:
+
+\begin{quote}
+    \singlespacing
+   \textit{
+    Any change in the office of President and Chief Executive Officer of Farah [Manufacturing Company, Inc.] or any other change in the executive management of Farah [Manufacturing Company, Inc.] which any two Banks shall consider, for any reason whatsoever, to be adverse to the interests of the Banks.
+   }
+\end{quote}
+
+This clause was added in an amended version of a previous contract, potentially in response to the \$43,965,000 in accumulated pre-tax losses suffered under the recently departed CEO, William Farah.
+The new CEO (named in the suit only as Leone) was hired to resuscitate the firm, but after a year of further-declining sales, William Farah attempted to regain his former position as CEO.
+What followed was a lengthy control battle between the lenders, who wanted one of their board members, William Conroy, rather than Farah, to replace Leone as CEO.
+The banks threatened to accelerate the loan repayment under the CMR clause.
+The borrower's board, faced with the decision to potentially bankrupt the firm if they selected Farah as the replacement CEO, agreed to the banks' demands and elected Mr. Conroy to the position.
+
+
+Over the subsequent year, Farah Manufacturing's financial condition continued to deteriorate.
+Conroy brought in a consultant, supported by the banks, who proceeded to sell off firm assets at auctions to meet loan payments.
+In response, William Farah gave notice of a proxy fight to regain control of the firm, which was eventually successful.%
+    \footnote{Full legal proceedings can be found at: \href{https://web.archive.org/web/20151029083607/http://www.leagle.com/decision/19841339678SW2d661_11247.xml/STATE\%20NAT.\%20BANK\%20v.\%20FARAH\%20MFG.\%20CO}{www.leagle.com/decision/19841339678SW2d661\_11247.xml/STATE NAT. BANK v. FARAH MFG. CO.}}
+He sued the banks for interference and was awarded \$18 million in damages.
+
+
+
+
+
+
+\section{Description of the Additional Variables}
+\phantomsection
+\label{IApp:vardef}
+\vspace{-1em}
+\input{./tables/ia/ia_variable_definitions}
+
+
+
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%
+% 888888b.   d8b 888      888 d8b                                            888
+% 888  "88b  Y8P 888      888 Y8P                                            888
+% 888  .88P      888      888                                                888
+% 8888888K.  888 88888b.  888 888  .d88b.   .d88b.  888d888 8888b.  88888b.  88888b.  888  888
+% 888  "Y88b 888 888 "88b 888 888 d88""88b d88P"88b 888P"      "88b 888 "88b 888 "88b 888  888
+% 888    888 888 888  888 888 888 888  888 888  888 888    .d888888 888  888 888  888 888  888
+% 888   d88P 888 888 d88P 888 888 Y88..88P Y88b 888 888    888  888 888 d88P 888  888 Y88b 888
+% 8888888P"  888 88888P"  888 888  "Y88P"   "Y88888 888    "Y888888 88888P"  888  888  "Y88888
+%                                               888                 888                    888
+%                                          Y8b d88P                 888               Y8b d88P
+%                                           "Y88P"                  888                "Y88P"
+% We don't want the references section showing up, so bury it in a savebox
+%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\bibliographystyle{./resources/jf}
+\newsavebox\secretbib
+\savebox\secretbib{\parbox{\textwidth}{\bibliography{./resources/CMR}}}
+
+
+
+
+
+
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%
+% 88888888888       888      888
+%     888           888      888
+%     888           888      888
+%     888   8888b.  88888b.  888  .d88b.  .d8888b
+%     888      "88b 888 "88b 888 d8P  Y8b 88K
+%     888  .d888888 888  888 888 88888888 "Y8888b.
+%     888  888  888 888 d88P 888 Y8b.          X88
+%     888  "Y888888 88888P"  888  "Y8888   88888P'
+%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\clearpage
+\section{Supplementary Tables}
+ \label{IApp:extra_tables}
+
+\begin{singlespace}
+\renewcommand{\tablesize}{\footnotesize}
+\gdef\thetable{IA.\Roman{table}}
+
+
+
+% Table IA.I Sample Construction  :  \ref{IAtab:sampconstruct}
+\begin{papertable}{Sample Construction}{\ref{IAtab:sampconstruct}}{\vspace{8pt}}
+	\label{IAtab:sampconstruct}
+    Table~\ref{IAtab:sampconstruct} details the construction of our sample and the sample for which there are loan contracts with clauses that restrict a change of management.
+
+    \startdata
+    \input{./tables/ia/table_ia_1_sample_construction}
+\end{papertable}
+
+
+
+
+
+% Table IA.II Clause Type  :  \ref{IAtab:abcdtype}
+\begin{landscapepapertable}{CMR Clause Characteristics}{\ref{IAtab:abcdtype}}{}
+  \label{IAtab:abcdtype}
+
+    Table~\ref{IAtab:abcdtype} describes the characteristics of clauses related to change in management restrictions (CMRs).
+    For each lettered category, every contract with a CMR clause will have one of the numbered classifications with B2 being implicit.
+    \textit{Clause Restrictiveness} pertains to how restrictive the CMR clause is.
+    The most restrictive ones are those in which any change in management triggers a default.
+    Subsequently less restrictive ones are those in which only voluntary changes in management trigger defaults, allowing lenience for uncontrollable events such as death or disability.
+    The third category consists of those clauses that allow for changes in management given prior consent from the lenders, e.g., no change in management without consent from the administrative agent.
+    The least restrictive category consists of those clauses that require ex-post consent from the lender.
+    \textit{Replacement Approval} pertains to whether, in the event of a change, the clause explicitly requires lender approval of the replacement choice.
+    This is distinct from \textit{Clause Restrictiveness} in that A2 and A3 may or may not explicitly require approval over the replacement choice.
+    \textit{Source of the Change} describes whether the clause's wording pertains to a board's ability to change the management of the firm or to managers' ability to leave or change their acting capacity.
+    If the clause is unspecific (e.g., ``a change shall occur''), or if it is inclusive of initiation from either party (e.g., ``suffer, for any reason, a change''), it is categorized as \textit{General}.
+    \textit{Management Definition} pertains to the subject for which the clause restricts change.
+    Clauses referring to specific individuals by name only, by specific position only (e.g., CEO, CFO, Chairman etc.), or by both name and specific position are considered ``Named'' in their respective categories. General position references such as ``change of management'' are denoted as \textit{Vague}.
+
+    \startdata
+    \def\arraystretch{.9}
+    \input{./tables/ia/table_ia_2_CMR_categories}
+\end{landscapepapertable}
+
+
+
+
+
+
+% Table IA.III Summary Stats  :  \ref{IAtab:yearind}
+\begin{papertable}{Additional Summary Statistics}{\ref{IAtab:yearind}}{}
+    \label{IAtab:yearind}
+
+    Table~\ref{IAtab:yearind} presents additional summary statistics for variables included in the Internet Appendix and the CEO turnover sample from Table~\ref{tab:turnover}.
+    Panel A compares the year and Fama-French 12 industry distribution between the sample of packages that have a clause restricting changes in management and the sample of packages that do not.
+    T-statistics are calculated based on standard errors clustered at the firm-level to avoid bias from firms with relatively more or fewer debt issuances.
+    Panel B presents summary statistics for the variables used in our CEO turnover tests presented in the paper.
+    Panel C presents summary statistics for the variables used in our CEO turnover and covenant violation tests presented in Table~\ref{IAtab:covviol}.
+    Panel D presents summary statistics for the additional variables included in the robustness tables in the Internet Appendix.
+
+    \startdata
+    \input{./tables/ia/table_ia_3_year_industry}
+    \splittable
+    \input{./tables/ia/table_ia_3b_ceo_turnover_summary_stats}
+    \splittablesamepage
+    \vspace{-5mm}
+    \input{./tables/ia/table_ia_3c_ceo_turnover_cov_viol_summary_stats}
+    \splittable
+    \input{./tables/ia/table_ia_3d_summary_stats}
+\end{papertable}
+
+
+
+
+% Table IA.IV CMR Determinant + additional controls  :  \ref{IAtab:robust_additional_det}
+\begin{papertable}{Debt Overhang, Large Block, and Takeover Threat Considerations}{\ref{IAtab:robust_additional_det}}{}
+  \label{IAtab:robust_additional_det}
+
+  Table~\ref{IAtab:robust_additional_det} reports the results from probit regressions following Specification (5) in Table~\ref{tab:cmrdeterm}.
+  All tests are at the package level unless otherwise specified.
+  The dependent variable is an indicator variable for CMR clause inclusion.
+  The additional controls are defined above in Section~\ref{IApp:vardef}, and the remaining independent variables are defined in Appendix~\ref{App:vardef}.
+  Industry fixed effects are defined using the Fama-French 12 industry classification.
+  Robust standard errors are clustered at the firm level, z-statistics are reported in parentheses, and average marginal effects are reported in italics.
+  \postamblesig
+
+  \startdata
+  \input{./tables/ia/table_ia_4_determinants_plus}
+
+\end{papertable}
+
+
+
+
+
+% Table IA.V HC - Alternative Founder  :  \ref{IAtab:robust_ceo_founder}
+\begin{papertable}{Alternative Definition of Founder CEO}{\ref{IAtab:robust_ceo_founder}}{}
+  \label{IAtab:robust_ceo_founder}
+
+  Table~\ref{IAtab:robust_ceo_founder} reports the results from the probit regressions following Specifications (3) and (5) in Table~\ref{tab:cmrdeterm}, with the with the addition of an alternative specification for \textit{Founder CEO}, which takes into account the exact timing of the turnover with respect to the loan initiation.
+  All tests are at the package level unless otherwise specified.
+  The dependent variable is an indicator variable for CMR clause inclusion.
+  The additional controls are defined above in Section~\ref{IApp:vardef}, and the remaining independent variables are defined in Appendix~\ref{App:vardef}.
+  Industry fixed effects are defined using the Fama-French 12 industry classification.
+  Robust standard errors are clustered at the firm level, z-statistics are reported in parentheses, and average marginal effects are reported in italics.
+  \postamblesig
+
+  \startdata
+  \input{./tables/ia/table_ia_5_robust_human_capital}
+\end{papertable}
+
+
+
+
+% Table IA.VI Firm Age Robustness  :  \ref{IAtab:robust_firm_age}
+\begin{landscapepapertable}{Firm Age Robustness}{\ref{IAtab:robust_firm_age}}{}
+  \label{IAtab:robust_firm_age}
+
+  Table~\ref{IAtab:robust_firm_age} reports the results from the probit regressions following Table~\ref{tab:cmrhumancap}, with the with the addition of \textit{Firm Age} in Specifications (1)--(6), and using the subsample of firms with above median age in Specifications (7)--(12).
+  All tests are at the package level unless otherwise specified.
+  The dependent variable is an indicator variable for CMR clause inclusion.
+  Industry fixed effects are defined using the Fama-French 12 industry classification.
+  Robust standard errors are clustered at the firm level, z-statistics are reported in parentheses, and average marginal effects are reported in italics.
+  \postamble
+
+  \startdata
+  \input{./tables/ia/table_ia_6_crsp_age_controls}
+\end{landscapepapertable}
+
+
+
+
+% Table IA.VII Human Capital granular
+\begin{papertable}{CMR Clause Inclusion and Human Capital -- A More Granular Specification} {\ref{IAtab:granular_humancap}}{}
+    \label{IAtab:granular_humancap}
+
+    Table~\ref{IAtab:granular_humancap} reports results from probit regressions where the dependent variable is an indicator variable for CMR inclusion with the specified level of restrictiveness as defined in Table~\ref{IAtab:abcdtype}.
+    The specifications use the full set of firm and loan controls from Table~\ref{tab:cmrdeterm} Specification (5) with the addition of the X variable as listed.
+    % The specifications with CMR type (A1-A4) correspond to Specification (6) from Table~\ref{tab:cmrhumancap}.
+    We control for credit and term spread in all specifications (not reported).
+    Industry fixed effects are defined using the Fama-French 12 industry classification.
+    Robust standard errors are clustered at the firm level, and z-statistics are reported in parentheses.
+    The independent variables are defined in Appendix~\ref{App:vardef}.
+    \postamblesig
+
+    \startdata
+    \input{./tables/ia/table_ia_7_human_capital_subsets}
+    % Add: \addlinespace \textit{Average Marginal Effect}
+\end{papertable}
+
+
+
+
+% Table IA.VIII HC/Friction + CIC  :  \ref{IAtab:robust_cic}
+\begin{papertable}{Controlling for the Presence of a Change in Control Covenant}{\ref{IAtab:robust_cic}}{}
+  \label{IAtab:robust_cic}
+
+  Table~\ref{IAtab:robust_cic} reports the results from the probit regressions presented in Tables~\ref{tab:cmrhumancap} and \ref{tab:cmrfrictions}, with the addition of controls for the presence of a Change in Control clause in the debt contract.
+  All tests are at the package level unless otherwise specified.
+  The dependent variable is an indicator variable for CMR clause inclusion.
+  The additional covenant variables are defined above in Section~\ref{IApp:vardef}, and the remaining independent variables are defined in Appendix~\ref{App:vardef}.
+  Industry fixed effects are defined using the Fama-French 12 industry classification.
+  Robust standard errors are clustered at the firm level, z-statistics are reported in parentheses, and average marginal effects are reported in italics.
+  \postamblesig
+
+  \startdata
+  \input{./tables/ia/table_ia_8_with_cic}
+\end{papertable}
+
+
+
+
+
+% Table IA.IX HC/Friction + Extra loan controls  :  \ref{IAtab:robust_loan_cont}
+\begin{papertable}{Controlling for Additional Features of the Loan Contract}{\ref{IAtab:robust_loan_cont}}{}
+  \label{IAtab:robust_loan_cont}
+
+  Table~\ref{IAtab:robust_loan_cont} reports the results from the probit regressions presented in Tables~\ref{tab:cmrhumancap} and \ref{tab:cmrfrictions}, with the addition of the \textit{Extra Loan Controls}: \textit{Excess CF Sweep}, \textit{Asset Sale Sweep}, \textit{Debt Issuance Sweep}, \textit{Equity Issuance Sweep}, \textit{Insurance Proceeds Sweep}, \textit{Dividend Restriction}, \textit{Senority}, and \textit{Borrower Base Type}.
+  All tests are at the package level unless otherwise specified.
+  The dependent variable is an indicator variable for CMR clause inclusion.
+  The additional covenant variables are defined above in Section~\ref{IApp:vardef}, and the remaining independent variables are defined in Appendix~\ref{App:vardef}.
+  Industry fixed effects are defined using the Fama-French 12 industry classification.
+  Robust standard errors are clustered at the firm level, z-statistics are reported in parentheses, and average marginal effects are reported in italics.
+  \postamblesig
+
+  \startdata
+  \input{./tables/ia/table_ia_9_with_loan_controls}
+\end{papertable}
+
+
+
+
+
+% Table IA.X CMR Pricing Facility level  :  \ref{IAtab:robust_facility_pricing}
+\begin{papertable}{CMR Inclusion and Predicted Yield Differential -- Facility Level Specification}{\ref{IAtab:robust_facility_pricing}}{}
+  \label{IAtab:robust_facility_pricing}
+
+  Table~\ref{IAtab:robust_facility_pricing} reports the results from probit regressions on the selection-adjusted predicted yield differential and controls similar to those in Table~\ref{tab:pricing}, but conducted at the facility level.
+  We control for credit and term spread in all specifications.
+  Industry fixed effects are defined using the Fama-French 12 industry classification.
+  Robust standard errors are clustered at the firm level, z-statistics are reported in parentheses, and average marginal effects for the yield differential are reported in italics.
+  The independent variables are defined in Appendix~\ref{App:vardef}.
+  \postamblesig
+
+  \startdata
+  \input{./tables/ia/table_ia_10_facility_pricing}
+  % Add: \addlinespace \textit{Average Marginal Effect}
+
+\end{papertable}
+
+
+
+% Table IA.XI CMR Pricing restrictive A123 / A4  :  \ref{IAtab:robust_severity_pricing}
+\begin{papertable}{CMR Inclusion and Predicted Yield Differential -- Most Restrictive CMR vs. Least Restrictive CMR Specification}{\ref{IAtab:robust_severity_pricing}}{}
+  \label{IAtab:robust_severity_pricing}
+
+    Table~\ref{IAtab:robust_severity_pricing} reports the results from probit regressions on the selection-adjusted predicted yield differential and controls similar to those in Table~\ref{tab:pricing}, but conducted on the subsample of packages with a CMR clause, using \textit{Most Restrictive CMR} as the dependent variable.
+    \textit{Most Restrictive CMR} clauses are defined as those in categories A1, A2, or A3 in Table~\ref{IAtab:abcdtype}, and least restrictive CMR clauses are category A4.
+    Specifically, these most restrictive categories include any change in management (A1), any voluntary changes (A2), and any changes without prior consent by the lender (A3) that trigger a technical default.
+    The least restrictive CMR category consists of clauses that require \textit{ex-post} consent from the lender (A4).
+    Specification (4) modifies Specification (3) by removing the fixed effects for loan purpose and loan type from the pricing estimation first stage (\textit{X} vector).
+    Industry fixed effects are defined using the Fama-French 12 industry classification.
+    Robust standard errors are clustered at the firm level, z-statistics are reported in parentheses, and average marginal effects for the yield differential are reported in italics.
+    The independent variables are defined in Appendix~\ref{App:vardef}.
+    \postamblesig
+
+    \startdata
+    \input{./tables/ia/table_ia_11_cmr_severity_pricing}
+    % Add: \addlinespace \textit{Average Marginal Effect}
+
+\end{papertable}
+
+
+
+
+
+% Table IA.XII CEO Turnover - Alternative binding  :  \ref{IAtab:robust_turnover_alt_bind}
+\begin{papertable}{The Presence of a CMR Clause and CEO Turnover -- Alternative CMR Binding Specification}{\ref{IAtab:robust_turnover_alt_bind}}{}
+  \label{IAtab:robust_turnover_alt_bind}
+
+  Table~\ref{IAtab:robust_turnover_alt_bind} reports results from probit regressions similar to those in Table~\ref{tab:turnover}.
+  The dependent variable is an indicator variable for CEO turnover, which has been hand-verified to eliminate noise in the CMR Binding variable.
+  Robust standard errors are clustered at the firm level, and z-statistics are reported in parentheses.
+  The independent variables are defined in Appendix~\ref{App:vardef}.
+  \postamblesig
+
+  \startdata
+  \input{./tables/ia/table_ia_12_alternate_ceo_turnover}
+% \addlinespace \textit{CMR Clause Binding:} & & & & & & \\ \textit{Average Marginal Effect}
+
+\end{papertable}
+
+
+
+% Table IA.XIII CEO Turnover - Change in ROA  :  \ref{IAtab:robust_turnover_delta_roa}
+\begin{papertable}{The Presence of a CMR Clause and CEO Turnover -- Change in ROA}{\ref{IAtab:robust_turnover_delta_roa}}{}
+  \label{IAtab:robust_turnover_delta_roa}
+
+  Table~\ref{IAtab:robust_turnover_delta_roa} reports results from probit regressions similar to those in Table~\ref{tab:turnover}, where the ROA is replaced with the change in ROA ($\Delta ROA$).
+  The dependent variable is an indicator variable for CEO turnover.
+  Note that the variable \textit{CMR Clause Binding} has been shortened to \textit{CMR Binding} for brevity.
+  Robust standard errors are clustered at the firm level, and z-statistics are reported in parentheses.
+  The independent variables are defined in Appendix~\ref{App:vardef}.
+  \postamblesig
+
+  \startdata
+  \input{./tables/ia/table_ia_13_ceo_turnover_delta_roa}
+% \addlinespace \textit{CMR Clause Binding:} & & & & & & \\ \textit{Average Marginal Effect}
+
+\end{papertable}
+
+
+
+
+% Table IA.XIV CEO Turnover - No ROA  :  \ref{IAtab:robust_turnover_no_roa}
+\begin{papertable}{The Presence of a CMR Clause and CEO Turnover -- Omitting ROA}{\ref{IAtab:robust_turnover_no_roa}}{}
+  \label{IAtab:robust_turnover_no_roa}
+
+  Table~\ref{IAtab:robust_turnover_no_roa} reports results from probit regressions similar to those in Table~\ref{tab:turnover}, where the ROA is replaced with the Change in ROA ($\Delta ROA$).
+  The dependent variable is an indicator variable for CEO turnover.
+  Note that the variable \textit{CMR Clause Binding} has been shortened to \textit{CMR Binding} for brevity.
+  Robust standard errors are clustered at the firm level, and z-statistics are reported in parentheses.
+  The independent variables are defined in Appendix~\ref{App:vardef}.
+  \postamblesig
+
+  \startdata
+  \input{./tables/ia/table_ia_14_ceo_turnover_no_roa}
+
+\end{papertable}
+
+
+
+
+% Table IA.XV CEO Turnover - Industry adjusted returns  :  \ref{IAtab:robust_turnover_indret}
+\begin{papertable}{The Presence of a CMR Clause and CEO Turnover -- Industry Adjusted Returns}{\ref{IAtab:robust_turnover_indret}}{}
+  \label{IAtab:robust_turnover_indret}
+
+  Table~\ref{IAtab:robust_turnover_indret} reports results from probit regressions similar to those in Table~\ref{tab:turnover}, where the one and three year returns are industry adjusted, using the Fama-French 48 industry returns.
+  The dependent variable is an indicator variable for CEO turnover.
+  Note that the variable \textit{CMR Clause Binding} has been shortened to \textit{CMR Binding} for brevity.
+  Robust standard errors are clustered at the firm level, and z-statistics are reported in parentheses.
+  The independent variables are defined in Appendix~\ref{App:vardef}.
+  \postamblesig
+
+  \startdata
+  \input{./tables/ia/table_ia_15_ceo_turnover_industry_returns}
+% \addlinespace \textit{CMR Clause Binding:} & & & & & & \\ \textit{Average Marginal Effect}
+
+\end{papertable}
+
+
+
+
+% Table IA.XVI CEO Turnover - Performance interaction  :  \ref{IAtab:robust_turnover_interact}
+\begin{papertable}{The Presence of a CMR Clause and CEO Turnover -- Stock Price Performance Interaction}{\ref{IAtab:robust_turnover_interact}}{}
+  \label{IAtab:robust_turnover_interact}
+
+  Table~\ref{IAtab:robust_turnover_interact} reports results from probit regressions similar to those in Table~\ref{tab:turnover}, with the addition of an interaction with stock performance.
+  The dependent variable is an indicator variable for CEO turnover.
+  Note that the variable \textit{CMR Clause Binding} has been shortened to \textit{CMR Binding} for brevity.
+  Robust standard errors are clustered at the firm level, and z-statistics are reported in parentheses.
+  The independent variables are defined in Appendix~\ref{App:vardef}.
+  \postamblesig
+
+  \startdata
+  \input{./tables/ia/table_ia_16_ceo_turnover_and_performance}
+% \addlinespace \textit{CMR Clause Binding:} & & & & & & \\ \textit{Average Marginal Effect}
+
+\end{papertable}
+
+% Table IA.XVII CMR and Covenant Violation (Sufi)  :  \ref{IAtab:covviol}
+\begin{papertable}{The Mitigating Effect of CMRs: Covenant Violations and CEO Turnover}{\ref{IAtab:covviol}}{}
+  \label{IAtab:covviol}
+
+  Table~\ref{IAtab:covviol} reports results from linear probability model regressions of CEO turnover on the presence of new covenant violations, similar to those in \cite{Nini_2012}.
+  The dependent variable is an indicator variable for CEO turnover in quarter $t$.
+  All specifications contain the following firm controls: \textit{Ln(Assets)}, \textit{Leverage}, \textit{MTB}, the current ratio (short term assets to liabilities), and the following scaled by average assets: operating cash flows, interest expense, and net worth.
+  All specifications include industry fixed effects using the Fama-French 12 industry specification, fiscal quarter fixed effects, and calendar quarter fixed effects.
+  Robust standard errors are clustered at the firm level, and t-statistics are reported in parentheses.
+  \postamblesig
+
+  \startdata
+  \input{./tables/ia/table_ia_17_ceo_turnover_cov_viol}
+
+\end{papertable}
+
+
+
+
+% Table IA.XVIII Firm Outcome - Additional loan controls  :  \ref{IAtab:firmoutcome_loan}
+\begin{landscapepapertable}{CMR Inclusion and Future Firm Performance -- Loan and Syndicate Controls}{\ref{IAtab:firmoutcome_loan}}{\skipline}
+  \label{IAtab:firmoutcome_loan}
+
+  Table~\ref{IAtab:firmoutcome_loan} reports results from linear regressions of the firm outcomes - Tobin's Q in Panel A and Operating CF in Panel B, following \cite{Nini_2009}, with the addition of the loan and syndicate controls from Table~\ref{tab:cmrdeterm} Specification (5).
+  Outcomes and specifications are otherwise the same as those in Table~\ref{tab:firmoutcome}.
+  All specifications include year indicator variables.
+  Robust standard errors are clustered at the firm level and t-statistics are reported in parentheses.
+  \postamble
+
+    \def\arraystretch{.92}
+  \startdata
+    \begin{tabular}{l*{10}{c}}
+        \toprule
+        \multicolumn{11}{c}{\small  \textbf{Panel A}: Dependent Variable = Tobin's Q} \\ \midrule
+        \input{./tables/ia/table_ia_18_firm_outcome_loan_controls_tobinsq}
+        \midrule \midrule
+        \multicolumn{11}{c}{\small  \textbf{Panel B}: Dependent Variable = Operating CF} \\ \midrule
+        \input{./tables/ia/table_ia_18_firm_outcome_loan_controls_oibdp_at}
+        \bottomrule
+    \end{tabular}
+\end{landscapepapertable}
+
+
+
+% Table IA.XIX Key Man  :  \ref{IAtab:keyman}
+\begin{papertable}{CMR Clauses and Key Man Insurance Provisions}{\ref{IAtab:keyman}}{}
+  \label{IAtab:keyman}
+
+  Table~\ref{IAtab:keyman} reports the results of regressions of CMR inclusion on key man insurance provisions.
+  Specifications (1) and (2) use the full sample, while Specification (3) uses the subsample of firms for which \textit{Insurance Intensity} was gathered by \cite{Israelsen_2017}.
+  The odd and even specifications use the controls from Specifications (3) and (5) from Table~\ref{tab:cmrdeterm}, respectively.
+  We control for credit and term spreads in all specifications (not reported).
+  Industry fixed effects are defined using the Fama-French 12 industry classification.
+  Robust standard errors are clustered at the firm level, t-statistics are reported in parentheses, and average marginal effects are reported in italics.
+  The independent variables are defined in Appendix~\ref{App:vardef}.
+  \postamblesig
+
+  \startdata
+  \input{./tables/ia/table_ia_19_keyman_insurance}
+\end{papertable}
+
+
+% Table IA.XX Adding removing CMR clauses  :  \ref{IAtab:add_rem_cmr}
+\begin{papertable}{Adding and Removing CMR Clauses}{\ref{IAtab:add_rem_cmr}}{}
+    \label{IAtab:add_rem_cmr}
+
+    Table~\ref{IAtab:add_rem_cmr} reports results from a T-test on the difference of means for firms with loans that did not have a CMR before issuing loans with one (Panel A) and for firms that issued CMR loans and later issued loans without one (Panel B).
+    \textit{Relationship} is defined as a dummy variable equal to one if the borrower had a syndicated loan with one of the lead lenders in the previous three years.
+    The remaining variables are defined in Appendix~\ref{App:vardef}.
+    \postamblesig
+
+    \startdata
+    \input{./tables/ia/table_ia_20_pre_post_loan_tests}
+\end{papertable}
+
+
+
+\end{singlespace}
+
+\end{appendices}
+\end{document}

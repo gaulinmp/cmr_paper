@@ -1,0 +1,20 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{c}}
+\toprule
+                &\mc{3}{Dependent Variable = CMR Clause}                 \\\cmidrule(lr){2-4}
+                &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+\midrule
+ $ \widehat{LogYield}_{NoCMR}-\widehat{LogYield}_{CMR} $            &    0.181         &    0.055         &   -0.033         \\
+                &   (1.55)         &   (0.46)         &  (-0.27)         \\
+                &\textit{0.072}         &\textit{0.022}         &\textit{-0.013}         \\
+\addlinespace \midrule Firm Controls&        Y         &        Y         &        Y         \\
+Loan/Syndicate Controls&        Y         &        Y         &        Y         \\
+Year F.E.       &        Y         &        Y         &        Y         \\
+Industry F.E.   &        Y         &        Y         &        Y         \\
+\midrule
+Pseudo R$ ^2$   &   0.0021         &   0.0020         &   0.0020         \\
+Observations    &   15,501         &   15,501         &   15,501         \\
+\bottomrule
+\end{tabular}
+}

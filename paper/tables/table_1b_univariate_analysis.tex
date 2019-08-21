@@ -1,0 +1,37 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{1}{ccccccc}}
+\toprule
+                     \multicolumn{8}{c}{\small \centering \textbf{Panel B}: Univariate Analysis} \\ \midrule                     & \multicolumn{2}{c}{Loan Contract} & \multicolumn{2}{c}{Loan Contract} & \multicolumn{2}{c}{Difference} & Wilcoxon \\                     & \multicolumn{2}{c}{with a CMR} &  \multicolumn{2}{c}{with no CMR} &  \multicolumn{2}{c}{in Mean} &  \multicolumn{1}{c}{Rank-Sum Test} \\                         \cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-8}                    &        Mean&      Median&        Mean&      Median&  Difference         &      T-stat&      Z-stat         \\
+\midrule
+\multicolumn{8}{l}{\textbf{Firm Characteristics}} \\ Log(AT)             &        6.80&        6.81&        6.75&        6.73&        0.04         &        1.58&        1.74\sym{*}  \\
+Z-score             &        1.41&        1.40&        1.39&        1.40&        0.02         &        0.73&        0.67         \\
+Tangibility         &        0.27&        0.26&        0.27&        0.26&       -0.00         &       -1.08&       -1.02         \\
+MtB                 &        3.27&        2.91&        3.29&        2.88&       -0.02         &       -0.47&       -0.30         \\
+Operating CF        &        0.14&        0.14&        0.14&        0.14&       -0.00         &       -0.35&       -0.55         \\
+Leverage (Book)     &        0.33&        0.32&        0.33&        0.32&       -0.00         &       -0.79&       -0.37         \\
+Rated               &        0.50&        0.00&        0.50&        0.00&        0.00         &        0.17&        0.17         \\
+Term Spread         &        1.16&        1.15&        1.14&        1.14&        0.02         &        1.08&        0.99         \\
+Credit Spread       &        0.96&        0.94&        0.96&        0.94&        0.00         &        0.49&        0.51         \\
+Tobin's Q           &        1.73&        1.66&        1.73&        1.66&       -0.00         &       -0.13&       -0.29         \\
+Low NC Enforcement  &        0.50&        0.00&        0.49&        0.00&        0.00         &        0.22&        0.22         \\
+\% Insider (Ind.)   &        0.68&        0.67&        0.68&        0.68&       -0.00         &       -0.64&       -0.71         \\
+Founder CEO         &        0.49&        0.00&        0.50&        0.00&       -0.01         &       -0.68&       -0.68         \\
+CEO Ownership \%    &        0.03&        0.02&        0.03&        0.02&       -0.00         &       -0.06&       -0.54         \\
+CEO Retirement Age  &        0.51&        1.00&        0.50&        1.00&        0.01         &        0.83&        0.83         \\
+No Heir-Apparent    &        0.50&        1.00&        0.51&        1.00&       -0.01         &       -0.83&       -0.83         \\
+CEO Age             &       57.56&       58.00&       57.67&       58.00&       -0.11         &       -0.67&       -0.66         \\
+New CEO             &        0.50&        0.00&        0.49&        0.00&        0.00         &        0.60&        0.60         \\
+CEO Tenure          &       91.10&       89.53&       91.47&       88.41&       -0.37         &       -0.32&       -0.03         \\
+\addlinespace \multicolumn{8}{l}{\textbf{Loan Characteristics}} \\ All-in Spread Drawn &      210.50&      202.91&      210.45&      203.40&        0.05         &        0.03&       -0.12         \\
+Number of Lenders   &       17.64&       18.00&       17.57&       18.00&        0.07         &        0.47&        0.47         \\
+Scaled Loan Amount  &        0.31&        0.28&        0.31&        0.28&       -0.00         &       -1.38&       -1.36         \\
+Maturity            &       43.98&       48.00&       44.06&       48.00&       -0.08         &       -0.22&       -0.13         \\
+Collateralized      &        0.50&        1.00&        0.50&        0.00&        0.00         &        0.55&        0.55         \\
+\# of Financial Covenants&        2.49&        2.00&        2.51&        3.00&       -0.02         &       -0.70&       -0.70         \\
+Performance Pricing &        0.50&        1.00&        0.50&        1.00&        0.00         &        0.54&        0.54         \\
+\% Lead Allocation  &        0.59&        0.61&        0.60&        0.61&       -0.00         &       -0.81&       -0.84         \\
+Local Lead          &        0.50&        1.00&        0.50&        1.00&       -0.00         &       -0.54&       -0.54         \\
+\bottomrule
+\end{tabular}
+}

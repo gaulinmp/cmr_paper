@@ -1,0 +1,31 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{c}}
+\toprule
+                &\mc{3}{Dependent Variable = CMR Clause}                 \\\cmidrule(lr){2-4}
+                &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+\midrule
+Key Human Capital&    0.034\sym{*}  &    0.031         &                  \\
+                &   (1.72)         &   (1.58)         &                  \\
+                &\textit{0.013}         &\textit{0.012}         &                  \\
+Key-person Insured&    0.007         &    0.010         &                  \\
+                &   (0.35)         &   (0.47)         &                  \\
+                &\textit{0.003}         &\textit{0.004}         &                  \\
+Founder CEO     &   -0.014         &   -0.013         &                  \\
+                &  (-0.72)         &  (-0.66)         &                  \\
+                &\textit{-0.006}         &\textit{-0.005}         &                  \\
+Insurance Intensity&                  &                  &    0.003         \\
+                &                  &                  &   (1.16)         \\
+                &                  &                  &\textit{0.001}         \\
+\addlinespace \midrule Firm Controls   &        Y         &        Y         &        Y         \\
+Loan/Syndicate Controls&        N         &        Y         &        N         \\
+Loan Purpose F.E.&        N         &        Y         &        N         \\
+Loan Type F.E.  &        N         &        Y         &        N         \\
+Year F.E.       &        Y         &        Y         &        Y         \\
+Industry F.E.   &        Y         &        Y         &        Y         \\
+\midrule
+Pseudo R$ ^2$   &     0.00         &     0.00         &     0.00         \\
+Observations    &   15,501         &   15,501         &   15,501         \\
+\bottomrule
+\end{tabular}
+}

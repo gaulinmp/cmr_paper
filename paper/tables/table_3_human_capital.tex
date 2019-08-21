@@ -1,0 +1,22 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{6}{c}}
+\toprule &\multicolumn{6}{c}{Dependent Variable = CMR Clause} \\ \cmidrule(lr){2-7} \addlinespace X = 
+          &\mc{2}{Founder CEO}                  &\mc{2}{\% Insider (Ind.)}            &\mc{2}{No Heir-Apparent}             \\\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+          &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         &\multicolumn{1}{c}{(6)}         \\
+
+\midrule X      &   -0.015         &   -0.013         &   -0.052         &   -0.052         &   -0.016         &   -0.017         \\
+          &  (-0.73)         &  (-0.67)         &  (-0.66)         &  (-0.66)         &  (-0.82)         &  (-0.87)         \\
+          &\textit{-0.006}         &\textit{-0.005}         &\textit{-0.021}         &\textit{-0.021}         &\textit{-0.006}         &\textit{-0.007}         \\
+\addlinespace \midrule Firm Controls&        Y         &        Y         &        Y         &        Y         &        Y         &        Y         \\
+Loan/Syndicate Controls&        N         &        Y         &        N         &        Y         &        N         &        Y         \\
+Loan Purpose F.E.&        N         &        Y         &        N         &        Y         &        N         &        Y         \\
+Loan Type F.E.&        N         &        Y         &        N         &        Y         &        N         &        Y         \\
+Year F.E. &        Y         &        Y         &        Y         &        Y         &        Y         &        Y         \\
+Industry F.E.&        Y         &        Y         &        Y         &        Y         &        Y         &        Y         \\
+
+Pseudo R$ ^2$&   0.0019         &   0.0042         &   0.0019         &   0.0042         &   0.0020         &   0.0043         \\
+Observations&   15,501         &   15,501         &   15,501         &   15,501         &   15,501         &   15,501         \\
+\bottomrule
+\end{tabular}
+}

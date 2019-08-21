@@ -1,0 +1,40 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{5}{c}}
+\toprule
+                &\multicolumn{5}{c}{Dependent Variable = CMR Clause}                                           \\\cmidrule(lr){2-6}
+                &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         \\
+
+\midrule Debt Matures $ > $ 3yr&    0.004         &                  &                  &                  &    0.004         \\
+                &   (0.11)         &                  &                  &                  &   (0.12)         \\
+                &\textit{0.001}         &                  &                  &                  &\textit{0.002}         \\
+R\&D / Assets   &   -0.586\sym{*}  &                  &                  &                  &   -0.591\sym{*}  \\
+                &  (-1.68)         &                  &                  &                  &  (-1.69)         \\
+                &\textit{-0.233}         &                  &                  &                  &\textit{-0.234}         \\
+VIX             &    0.001         &                  &                  &                  &    0.001         \\
+                &   (0.34)         &                  &                  &                  &   (0.35)         \\
+                &\textit{0.000}         &                  &                  &                  &\textit{0.000}         \\
+Largest Block \%&                  &   -0.000         &                  &                  &   -0.000         \\
+                &                  &  (-0.57)         &                  &                  &  (-0.57)         \\
+                &                  &\textit{-0.000}         &                  &                  &\textit{-0.000}         \\
+\% Industry Acquired in 3yr&                  &                  &   -0.000         &                  &   -0.000         \\
+                &                  &                  &  (-0.04)         &                  &  (-0.05)         \\
+                &                  &                  &\textit{-0.000}         &                  &\textit{-0.000}         \\
+Firm Delists in 7yr&                  &                  &    0.024         &                  &    0.025         \\
+                &                  &                  &   (1.20)         &                  &   (1.23)         \\
+                &                  &                  &\textit{0.010}         &                  &\textit{0.010}         \\
+Relationship    &                  &                  &                  &   -0.004         &   -0.003         \\
+                &                  &                  &                  &  (-0.18)         &  (-0.17)         \\
+                &                  &                  &                  &\textit{-0.001}         &\textit{-0.001}         \\
+\addlinespace \midrule Firm Controls   &        Y         &        Y         &        Y         &        Y         &        Y         \\
+Loan/Syndicate Controls&        Y         &        Y         &        Y         &        Y         &        Y         \\
+Loan Purpose F.E.&        Y         &        Y         &        Y         &        Y         &        Y         \\
+Loan Type F.E.  &        Y         &        Y         &        Y         &        Y         &        Y         \\
+Year F.E.       &        Y         &        Y         &        Y         &        Y         &        Y         \\
+Industry F.E.   &        Y         &        Y         &        Y         &        Y         &        Y         \\
+
+Pseudo R$ ^2 $  &     0.00         &     0.00         &     0.00         &     0.00         &     0.00         \\
+Observations    &   15,501         &   15,501         &   15,501         &   15,501         &   15,501         \\
+\bottomrule
+\end{tabular}
+}

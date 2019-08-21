@@ -1,0 +1,20 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\toprule
+                &\mc{4}{Dep. Var. = Most Restrictive CMR}                                   \\\cmidrule(lr){2-5}
+                &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         \\
+\midrule
+ $ \widehat{LogYield}_{Least Restrictive}-\widehat{LogYield}_{Most Restrictive} $   &   -0.270\sym{***}&   -0.389\sym{***}&   -0.524\sym{***}&   -0.669\sym{*}  \\
+                &  (-7.61)         &  (-3.18)         &  (-5.29)         &  (-1.89)         \\
+                &\textit{-0.107}         &\textit{-0.155}         &\textit{-0.208}         &\textit{-0.266}         \\
+\addlinespace \midrule Firm Controls&        Y         &        Y         &        Y         &        Y         \\
+Loan/Syndicate Controls&        Y         &        Y         &        Y         &        Y         \\
+Industry F.E.   &        Y         &        Y         &        Y         &        Y         \\
+Year F.E.       &        Y         &        Y         &        Y         &        Y         \\
+\midrule
+Pseudo R$ ^2$   &     0.00         &     0.00         &     0.00         &     0.00         \\
+Observations    &   15,501         &   15,501         &   15,501         &   15,501         \\
+\bottomrule
+\end{tabular}
+}

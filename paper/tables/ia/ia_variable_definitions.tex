@@ -1,0 +1,56 @@
+\bgroup
+\singlespacing
+
+The following describes the additional variables used in this internet appendix.
+Compustat and ExecuComp variables are measured at the fiscal year end immediately preceding the package deal-active date.
+
+\begin{center}
+	\centering
+% 	\def\arraystretch{1.1}
+    \footnotesize
+	\begin{longtable*}{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{.2 \textwidth} >{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{.55 \textwidth} >{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{.16 \textwidth}}
+        \toprule
+		\textbf{Variable} 	& \textbf{Description} & \textbf{Source} \\ \midrule
+		\endfirsthead
+		\multicolumn{3}{c}{...continued from previous page.} \\
+		\toprule
+		\textbf{Variable} 	& \textbf{Description} & \textbf{Source} \\ \midrule
+		\endhead
+		\midrule
+		\multicolumn{3}{c}{Continued on next page...} \\
+		\endfoot
+		\bottomrule
+		\endlastfoot
+        %
+\multicolumn{3}{l}{\normalsize \textbf{\textit{Firm/Borrower Characteristics}} } \\ \addlinespace
+Firm Age & Age of the firm in years, based on first public equity listing in CRSP. & CRSP \\
+Debt Matures $ > $ 3yr         & Amount of debt maturing in more than 3 years $(DLTT - DD2 - DD3)/(DLTT + DLC)$ & Compustat \\ % \cite{Custodio_2013}
+R\&D / Assets                  & Ratio of R\&D to lagged assets $ COALESCE(xrd_{t}, 0) / at_{t-1} $   & Compustat \\
+\% Industry Acquired in 3yr    & Percentage of two digit SIC industry that delists over the subsequent three years & CRSP \\
+Firm Delists in 7yr            & Dummy equal to 1 if the firm delists in the subsequent seven years & CRSP \\
+Founder CEO (alternative)      & Dummy equal to \textit{Founder CEO}, but set to 0 if \textit{leftofc} occurs before the loan initiation date. & ExecuComp \\
+Largest Block \%               & Percentage of shares outstanding owned by the largest block, as reported in form 13-D/G & \cite{Volkova_2017} \\
+Key Human Capital              & Dummy equal to 1 if the firm reported the presence of key human capital in its annual report & \cite{Israelsen_2017}  \\
+Key-person Insured             & Dummy equal to 1 if the firm reported that it had taken out a life insurance policy on key personnel in its annual report & \cite{Israelsen_2017}  \\
+Insurance Intensity            & Ratio of the key-person life insurance policy amount to total assets (as a percentage)  & \cite{Israelsen_2017} \\
+%
+%
+\addlinespace
+\multicolumn{3}{l}{\normalsize \textbf{\textit{Loan/Lender Characteristics}}} \\ \addlinespace
+Has CIC Clause                  & Dummy equal to 1 if the debt contract contains a Change in Control covenant & \cite{akins_2019} \\
+Relationship                    & Dummy equal to 1 if the firm has taken a loan from the same lead arranger in the past three years & DealScan \\
+Excess CF Sweep                 & The percentage amount of net proceeds a borrower receives from excess CF that must be used to reduce any loan balance outstanding & DealScan \\
+Asset Sale Sweep                & The percentage amount of net proceeds a company receives from an asset sale that must be used to pay down any outstanding loan balance & DealScan \\
+Debt Issuance Sweep             & The percentage amount of net proceeds a company receives from the issuance of debt that must be used to pay down any outstanding loan balance & DealScan \\
+Equity Issuance Sweep           & The percentage amount of net proceeds a company receives from the issuance of equity that must be used to pay down any outstanding loan balance & DealScan \\
+Insurance Proceeds Sweep        & The percentage amount of net proceeds a company receives from insurance settlements that must be used to pay down any outstanding loan balance & DealScan \\
+Dividend Restriction            & Dummy equal to 1 if the borrower is restricted from paying dividends to its shareholders & DealScan \\
+Senority                        & Series of four dummy variables, indicating whether the senority of the facility is one of: \textit{Mezzanine}, \textit{Senior}, \textit{Senior Subordinated}, \textit{Subordinate} & DealScan \\
+Borrower Base Type              & Series of 15 dummy variables, indicating whether the type of borrowing bases to which the particular facility could be subject is one of: \textit{Accounts Receivable -- Domestic}, \textit{Accounts Receivable -- Foreign}, \textit{Cash \& Cash Equivalents}, \textit{Eligible Accounts Receivable}, \textit{Eligible Inventory}, \textit{Eligible Property Value}, \textit{Inventory -- Finished Goods}, \textit{Inventory -- Raw Material}, \textit{Inventory -- Work in Progress}, \textit{Marketable Securities}, \textit{Oil \& Gas Reserves}, \textit{Property, Plant \& Equipment}, \textit{No}, \textit{Other}, \textit{Unknown} & DealScan \\
+\addlinespace
+\multicolumn{3}{l}{\normalsize \textbf{\textit{Macro Characteristics}}} \\ \addlinespace
+VIX                             & CBOE Volatility Index, measured at loan initiation date & \href{http://www.cboe.com/products/vix-index-volatility/vix-options-and-futures/vix-index/vix-historical-data}{cboe.com} \\
+%
+	\end{longtable*}
+\end{center}
+\egroup

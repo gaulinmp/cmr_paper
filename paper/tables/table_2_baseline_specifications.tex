@@ -1,0 +1,44 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{5}{c}}
+\toprule
+                &\multicolumn{5}{c}{Dependent Variable = CMR Clause}                                           \\\cmidrule(lr){2-6}
+                &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         \\
+
+\midrule Log(AT)         &    0.009         &    0.009         &    0.009         &    0.009         &    0.010\sym{*}  \\
+                &   (1.57)         &   (1.57)         &   (1.59)         &   (1.58)         &   (1.71)         \\
+Z-score         &    0.005         &    0.005         &    0.005         &    0.005         &    0.006         \\
+                &   (0.71)         &   (0.70)         &   (0.71)         &   (0.71)         &   (0.87)         \\
+Tangibility     &                  &   -0.073         &   -0.072         &   -0.072         &   -0.068         \\
+                &                  &  (-1.16)         &  (-1.14)         &  (-1.14)         &  (-1.08)         \\
+MtB             &                  &   -0.002         &   -0.002         &   -0.002         &   -0.002         \\
+                &                  &  (-0.43)         &  (-0.42)         &  (-0.41)         &  (-0.40)         \\
+Operating CF    &                  &                  &   -0.027         &   -0.028         &   -0.026         \\
+                &                  &                  &  (-0.37)         &  (-0.37)         &  (-0.35)         \\
+Leverage (Book) &                  &                  &   -0.043         &   -0.043         &   -0.039         \\
+                &                  &                  &  (-0.89)         &  (-0.89)         &  (-0.82)         \\
+Rated           &                  &                  &    0.006         &    0.005         &    0.004         \\
+                &                  &                  &   (0.27)         &   (0.26)         &   (0.20)         \\
+Log(\# of Lenders)&                  &                  &                  &    0.010         &    0.013         \\
+                &                  &                  &                  &   (0.76)         &   (0.93)         \\
+Scaled Loan Amount&                  &                  &                  &                  &   -0.071         \\
+                &                  &                  &                  &                  &  (-1.49)         \\
+Log(Maturity)   &                  &                  &                  &                  &    0.009         \\
+                &                  &                  &                  &                  &   (0.55)         \\
+Collateralized  &                  &                  &                  &                  &    0.011         \\
+                &                  &                  &                  &                  &   (0.55)         \\
+\# of Financial Covenants&                  &                  &                  &                  &   -0.004         \\
+                &                  &                  &                  &                  &  (-0.65)         \\
+Performance Pricing&                  &                  &                  &                  &    0.012         \\
+                &                  &                  &                  &                  &   (0.61)         \\
+\midrule Loan Purpose F.E.&        N         &        N         &        N         &        N         &        Y         \\
+Loan Type F.E.  &        N         &        N         &        N         &        N         &        Y         \\
+Year F.E.       &        Y         &        Y         &        Y         &        Y         &        Y         \\
+Industry F.E.   &        Y         &        Y         &        Y         &        Y         &        Y         \\
+Spreads         &        N         &        N         &        Y         &        Y         &        Y         \\
+
+Pseudo R$ ^2 $  &   0.0017         &   0.0018         &   0.0019         &   0.0019         &   0.0042         \\
+Observations    &   15,501         &   15,501         &   15,501         &   15,501         &   15,501         \\
+\bottomrule
+\end{tabular}
+}
