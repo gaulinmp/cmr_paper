@@ -1,7 +1,7 @@
 <h1 style="text-align:center">Debt Contracting on Management</h1>
 <p style="text-align:center">By Brian Akins, David De Angelis, and Maclean Gaulin.</p>
-<p style="text-align:center">February 1, 2020</p>
-<p style="text-align:center">Forthcoming at <a href='https://onlinelibrary.wiley.com/journal/15406261' target=_blank>Journal of Finance</a>.</p>
+<p style="text-align:center">March 13<sup>th</sup>, 2020</p>
+<p style="text-align:center">Forthcoming at <a href='https://onlinelibrary.wiley.com/doi/abs/10.1111/jofi.12893' target=_blank>Journal of Finance</a>.</p>
 
 
 [SSRN Link](https://papers.ssrn.com/abstract=2757508)
