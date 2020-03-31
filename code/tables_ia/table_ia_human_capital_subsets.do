@@ -38,7 +38,7 @@ $quietly {
 
     #delimit ;
     if $writeout
-    esttab using "${tdir}/ia/table_ia_7_human_capital_subsets.tex", replace
+    esttab using "${tdir}/ia/table_ia_human_capital_subsets.tex", replace
         booktabs type compress nogaps nobase nomtitle nomtitles noomitted
         ${stars} eqlabels(none) collabels(none)
         cells("b(fmt(${fmt3}) star)" "t(par fmt(${fmt2}))" ${tex_margins})

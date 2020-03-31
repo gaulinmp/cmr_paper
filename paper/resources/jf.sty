@@ -15,21 +15,27 @@
 
 % Make References title all caps.
 \renewcommand{\refname}{REFERENCES}
+\renewcommand\abstractname{\textsc{ABSTRACT}}
 
 % Put dots after numbers in section headers.
 \renewcommand{\@seccntformat}[1]{{\csname the#1\endcsname}.\hspace{1em}}
 
-% Section and table numbers 
+% Section and table numbers
 \def\thesection       {\Roman{section}}
 \def\thesubsection    {\Alph{subsection}}
+\def\thefigure        {\arabic{figure}}
+\def\thesubfigure     {\Alph{subfigure}}
 \def\thetable         {\Roman{table}}
 
 % Section header format
 \renewcommand{\section}{\@startsection
-  {section}{1}{0mm}{-3.5ex \@plus -1ex \@minus -.2ex}{2.3ex \@plus.2ex}{\centering\normalfont\Large\bfseries}}
+  {section}{1}{0mm}{-3.5ex \@plus -1ex \@minus -.2ex}{2.3ex \@plus.2ex}{\singlespacing\centering\normalfont\Large\bfseries}}
 
 \renewcommand{\subsection}{\@startsection
   {subsection}{2}{0mm}{-3.25ex \@plus -1ex \@minus -.2ex}{1.5ex \@plus.2ex}{\normalfont\large\itshape}}
+
+\renewcommand{\subsubsection}{\@startsection
+  {subsubsection}{3}{0mm}{-3.25ex \@plus -1ex \@minus -.2ex}{1.5ex \@plus.2ex}{\centering\normalfont\itshape}}
 
 % Put section number back in references to subsections and subsubsections.
 \renewcommand{\p@subsection}{\thesection .}
@@ -39,12 +45,12 @@
 
 \def\appendix{\par
   \setcounter{section}{0}%         % Start counting sections again
-  \setcounter{subsection}{0}% 
+  \setcounter{subsection}{0}%
 % Use uppercase letters for section numbers:
-  \gdef\thesection{\@Alph\c@section}% 
+  \gdef\thesection{\@Alph\c@section}%
 % Number equations (A1), etc.:
-  \renewcommand{\theequation}{\thesection\arabic{equation}}% 
-%   \renewcommand{\theaexample}{\thesection\arabic{aexample}}% 
+  \renewcommand{\theequation}{\thesection\arabic{equation}}%
+%   \renewcommand{\theaexample}{\thesection\arabic{aexample}}%
 % Put word "Appendix" before appendix number:
 %   \renewcommand{\@seccntformat}[1]{{Appendix \csname the##1\endcsname}:\hspace{1em}}
 %   \renewcommand{\sectioncntformat}{{Appendix \thesection}:\hspace{1em}}
@@ -52,7 +58,7 @@
 \def\@seccntformat##1{\@ifundefined{##1@cntformat}%
    {\csname the##1\endcsname.\hspace{1em}}%    default
    {\csname ##1@cntformat\endcsname}}% enable indiv. control
-\newcommand\section@cntformat{Appendix \thesection.\hspace{1em}}
+\newcommand\section@cntformat{Appendix.\hspace{.5em}} % \thesection omit A for one appendix
 \makeatother
 
 

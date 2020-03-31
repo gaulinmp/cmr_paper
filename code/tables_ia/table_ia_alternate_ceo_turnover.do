@@ -52,7 +52,7 @@ $quietly {
             indicate("Year FE = *year")
 
     if $writeout ///
-    esttab using "${tdir}/ia/table_ia_12_alternate_ceo_turnover.tex", replace ///
+    esttab using "${tdir}/ia/table_ia_alternate_ceo_turnover.tex", replace ///
         booktabs type compress nogaps nobase nomtitle nomtitles noomitted nolabel noconst ///
         ${stars} eqlabels(none) collabels(none) ///
         cells("b(fmt(${fmt3}) star)" "t(par fmt(${fmt2}))" ) ///

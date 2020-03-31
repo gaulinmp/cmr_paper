@@ -12,7 +12,13 @@ quietly { // load data
 
 $quietly {
 
+    replace TSR_1 = TSR_1 - indret_12mo_value
+    replace TSR_3 = TSR_3 - indret_36mo_value
+
     eststo clear
+
+    // Robustness test
+    local rest (i.restrict)
 
     // Controls
     local acctperf l_ebit_at
@@ -21,9 +27,8 @@ $quietly {
 
     foreach n in 1 3 {
         local stockperf (l.TSR_`n')
-        local rest (i.restrict)##C.(`stockperf')
 
-        local controls `acctperf' `ceocontrols'
+        local controls `stockperf' `acctperf' `ceocontrols'
 
         noisily display "{txt}Running: {res}probit turnover `rest' `controls' `ifst', cluster(${firm_id})"
         probit turnover `rest' `controls' `ifst', cluster(${firm_id})
@@ -49,7 +54,7 @@ $quietly {
             indicate("Year FE = *year")
 
     if $writeout ///
-    esttab using "${tdir}/ia/table_ia_16_ceo_turnover_and_performance.tex", replace ///
+    esttab using "${tdir}/ia/table_ia_ceo_turnover_industry_returns.tex", replace ///
         booktabs type compress nogaps nobase nomtitle nomtitles noomitted nolabel noconst ///
         ${stars} eqlabels(none) collabels(none) ///
         cells("b(fmt(${fmt3}) star)" "t(par fmt(${fmt2}))" ) ///
@@ -57,16 +62,14 @@ $quietly {
         indicate("Year F.E.=*year" , labels(Y N)) ///
         order(*restrict* *TSR*) ///
         varlabels(1.restrict "CMR Binding$ _{t} $" ///
-                  1.restrict#cL.TSR_1 "CMR Binding$ _{t} \times $ TSR 1 year$ _{t-1} $" ///
-                  1.restrict#cL.TSR_3 "CMR Binding$ _{t} \times $ TSR 3 year$ _{t-1} $" ///
-                  L.TSR_1 "TSR 1 year$ _{t-1} $" ///
-                  L.TSR_3 "TSR 3 year$ _{t-1} $" ///
+                  L.TSR_1 "TSR 1 year$ _{t-1, industry\ adjusted} $" ///
+                  L.TSR_3 "TSR 3 year$ _{t-1, industry\ adjusted} $" ///
                   l_ebit_at "ROA$ _{t-1} $"  ///
                   L.ceo_high_ownership "CEO High Ownership$ _{t-1} $"  ///
                   L.ceo_retirement_age "CEO Retirement Age$ _{t-1} $"  ///
                   L.ceo_tenure "CEO Tenure$ _{t-1} $" ///
                   1.has_cmr_ever "CMR Firm" ) ///
-        substitute("=1" "" "\midrule" "" "CMR Binding$ _{t} $" "\midrule CMR Binding$ _{t} $" "Year F.E." "\midrule Year F.E." ///
+        substitute("\midrule" "" "CMR Binding" "\midrule CMR Binding" "Year F.E." "\midrule Year F.E." ///
                    "\toprule" "\toprule &\mc{6}{Dependent Variable = CEO Turnover$ _t $} \\  \cmidrule(lr){2-7} ")
 
     quietly count if samp2==1 & has_cmr_ever==1 & restrict==0
@@ -93,4 +96,4 @@ $quietly {
     local turn=r(N)
     noisily display "All: `turn' / `tot'  =  " ${fmt2} (100*`turn'/`tot') "%"
 
-} // end $quietly
+} // top quietly

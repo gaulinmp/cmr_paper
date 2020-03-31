@@ -1,6 +1,6 @@
 <h1 style="text-align:center">Debt Contracting on Management</h1>
 <p style="text-align:center">By Brian Akins, David De Angelis, and Maclean Gaulin.</p>
-<p style="text-align:center">August 12, 2019</p>
+<p style="text-align:center">February 1, 2020</p>
 <p style="text-align:center">Forthcoming at <a href='https://onlinelibrary.wiley.com/journal/15406261' target=_blank>Journal of Finance</a>.</p>
 
 
@@ -98,8 +98,8 @@ The full file-structure is outlined below:
 │   └── tables
 │       ├── ia
 │       │   ├── ia_variable_definitions.tex
-│       │   ├── table_ia_1-20.tex
-│       ├── table_1-7.tex
+│       │   ├── table_ia_*.tex
+│       ├── table_*.tex
 │       └── variable_definitions.tex
 └── README.md
 ```

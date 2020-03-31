@@ -26,7 +26,7 @@ $quietly {
         keep(*khc* *CEO*)
 
     if $writeout ///
-    esttab using "${tdir}/ia/table_ia_19_keyman_insurance.tex", replace ///
+    esttab using "${tdir}/ia/table_ia_keyman_insurance.tex", replace ///
         booktabs type label compress nogaps nobase nomtitle nomtitles noomitted ///
         ${stars} eqlabels(none) collabels(none) ///
         cells("b(fmt(${fmt3}) star)" "t(par fmt(${fmt2}))" ${tex_margins}) ///

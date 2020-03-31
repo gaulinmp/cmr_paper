@@ -1,6 +1,6 @@
 \newenvironment{papertable}[3]{ % Begin begin papertable
-    \newcommand{\postamblevardef}{Variables are defined in Appendix \ref{App:vardef}.}
-    \newcommand{\postamblesig}{***, **, and * indicate significance at the 0.01, 0.05, and 0.10 level, respectively.}
+	\newcommand{\postamblevardef}{Variables are defined in the Appendix.}
+	\newcommand{\postamblesig}{***, **, and * indicate significance at the 1\%, 5\%, and 10\% level, respectively.}
     \newcommand{\postamble}{\postamblevardef \ \postamblesig}
     \newcommand{\startdata}{\centering \skipline \tablesize}
     \newcommand{\splittable}{\end{table} \clearpage \begin{table}[th] \startdata}
@@ -27,8 +27,8 @@
 \newenvironment{landscapepapertable}[3]{ % Begin begin landscapepapertable
     \newcommand{\lstbegin}{\begin{landscape}}
     \newcommand{\lstend}{\end{landscape}}
-    \newcommand{\postamblevardef}{Variables are defined in Appendix \ref{App:vardef}.}
-    \newcommand{\postamblesig}{ ***, **, and * indicate significance at the 0.01, 0.05, and 0.10 level, respectively.}
+	\newcommand{\postamblevardef}{Variables are defined in the Appendix.}
+	\newcommand{\postamblesig}{ ***, **, and * indicate significance at the 1\%, 5\%, and 10\% level, respectively.}
     \newcommand{\postamble}{\postamblevardef \ \postamblesig}
     \newcommand{\startdata}{\centering \skipline \tablesize}
 

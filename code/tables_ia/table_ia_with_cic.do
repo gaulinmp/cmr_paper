@@ -32,7 +32,7 @@ $quietly {
             indicate("CEO Controls = age* tenure new_ceo" ${max_indicate} )
 
     if $writeout ///
-    esttab using "${tdir}/ia/table_ia_8_with_cic.tex", replace booktabs type ///
+    esttab using "${tdir}/ia/table_ia_with_cic.tex", replace booktabs type ///
         label compress nogaps nobase noomitted nomtitles noconst nonote ///
         cells("b(fmt(${fmt3}) star)" "t(par fmt(${fmt2}))" `"margins_b(fmt(${fmt3}) par("\textit{" "}"))"') ///
         ${stars} ///

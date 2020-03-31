@@ -18,13 +18,14 @@ $quietly {
     local rest (i.restrict)
 
     // Controls
+    local acctperf d.l_ebit_at
     local ceocontrols l.ceo_high_ownership l.ceo_retirement_age l.ceo_tenure
     local ifst if (year > 1994) & (year <= 2014) & (l.ceo_tenure>=24) & !missing(l.ceo_tenure)
 
     foreach n in 1 3 {
         local stockperf (l.TSR_`n')
 
-        local controls `stockperf' `ceocontrols'
+        local controls `stockperf' `acctperf' `ceocontrols'
 
         noisily display "{txt}Running: {res}probit turnover `rest' `controls' `ifst', cluster(${firm_id})"
         probit turnover `rest' `controls' `ifst', cluster(${firm_id})
@@ -50,7 +51,7 @@ $quietly {
             indicate("Year FE = *year")
 
     if $writeout ///
-    esttab using "${tdir}/ia/table_ia_14_ceo_turnover_no_roa.tex", replace ///
+    esttab using "${tdir}/ia/table_ia_ceo_turnover_delta_roa.tex", replace ///
         booktabs type compress nogaps nobase nomtitle nomtitles noomitted nolabel noconst ///
         ${stars} eqlabels(none) collabels(none) ///
         cells("b(fmt(${fmt3}) star)" "t(par fmt(${fmt2}))" ) ///
@@ -60,14 +61,13 @@ $quietly {
         varlabels(1.restrict "CMR Binding$ _{t} $" ///
                   L.TSR_1 "TSR 1 year$ _{t-1} $" ///
                   L.TSR_3 "TSR 3 year$ _{t-1} $" ///
+                  D.l_ebit_at "$ \Delta $ ROA$ _{t-1} $"  ///
                   L.ceo_high_ownership "CEO High Ownership$ _{t-1} $"  ///
                   L.ceo_retirement_age "CEO Retirement Age$ _{t-1} $"  ///
                   L.ceo_tenure "CEO Tenure$ _{t-1} $" ///
                   1.has_cmr_ever "CMR Firm" ) ///
         substitute("\midrule" "" "CMR Binding" "\midrule CMR Binding" "Year F.E." "\midrule Year F.E." ///
                    "\toprule" "\toprule &\mc{6}{Dependent Variable = CEO Turnover$ _t $} \\  \cmidrule(lr){2-7} ")
-    /* After writing out, add \addlinespace \textit{CMR Clause Binding:} & & & & & & \\ \textit{Average Marginal Effect} \addlinespace
-    in front of the first \textit{}, and move it to the last line. */
 
     quietly count if samp2==1 & has_cmr_ever==1 & restrict==0
     local tot=r(N)

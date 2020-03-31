@@ -34,7 +34,7 @@ $quietly {
             indicate("Extra Loan Controls=*_i *sweep" "CEO Controls=age* tenure new_ceo" $max_indicate )
 
     if $writeout ///
-    esttab using "${tdir}/ia/table_ia_9_with_loan_controls.tex", replace ///
+    esttab using "${tdir}/ia/table_ia_with_loan_controls.tex", replace ///
         booktabs type label compress nogaps nobase noomitted nomtitles noconst nonote ///
         ${stars} eqlabels(none) collabels(none) ///
         cells("b(fmt(${fmt3}) star)" "t(par fmt(${fmt2}))" ${tex_margins}) ///

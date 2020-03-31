@@ -31,7 +31,7 @@ $quietly {
 
     #delimit ;
     if $writeout noisily
-    esttab using "${tdir}/ia/table_ia_17_ceo_turnover_cov_viol.tex", replace
+    esttab using "${tdir}/ia/table_ia_ceo_turnover_cov_viol.tex", replace
             booktabs type label compress nogaps noomitted nobase nomtitle noconstant
             ${stars} eqlabels(none) collabels(none)
             cells("b(fmt(${fmt3}) star)" "t(par fmt(${fmt2}))")

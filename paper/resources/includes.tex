@@ -35,10 +35,6 @@
 
 
 
-% This gets run from ../ by the main file.
-% This breaks the caption package.
-\RequirePackage{./resources/jf}
-
 
 % Add link packages, xr-hyper before hyperref as per instructions
 \RequirePackage{xr-hyper}
@@ -51,8 +47,9 @@
 
 % References
 \RequirePackage[english]{babel}
-\RequirePackage[round,longnamesfirst]{natbib}
-% See http://merkel.texture.rocks/Latex/natbib.php
+\RequirePackage[round,comma,longnamesfirst]{natbib}
+    % See http://merkel.texture.rocks/Latex/natbib.php
+    \setcitestyle{aysep={}}
     % From JF example tex file:
     \makeatletter
     % Patch case where name and year are separated by aysep
@@ -63,7 +60,7 @@
          \NAT@date}}
       {\@citea\NAT@nmfmt{\NAT@nm}%
        \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
-    
+
     % Patch case where name and year are separated by opening bracket
     \patchcmd{\NAT@citex}
       {\@citea\NAT@hyper@{%
@@ -81,9 +78,6 @@
 \RequirePackage{dcolumn}
 \RequirePackage{pdflscape}
 \RequirePackage{longtable}
-    % Roman Numerals
-    \renewcommand*\thetable{\Roman{table}}
-    \renewcommand*\thefigure{\Roman{figure}}
 \RequirePackage{tabularx}
     \newcolumntype{Y}{>{\centering\arraybackslash}X}
 \RequirePackage{booktabs}
@@ -92,11 +86,15 @@
 % Captions
 \RequirePackage[center,large,bf]{caption}
 \RequirePackage{subcaption}
-    \renewcommand\thesubfigure{.\Alph{subfigure}}
+    % Figure formatting
+    %\DeclareCaptionLabelFormat{panel}{Panel #1˜#2}
+    \DeclareCaptionLabelFormat{panel}{Panel~#2}
+    \captionsetup[table]{labelsep=newline}
+    \captionsetup[figure]{labelfont={bf},labelsep=period,font={normalsize},justification=justified}
+    \captionsetup[subfigure]{labelfont={},labelsep=period,name={Panel},labelformat=panel}
 
 
 \RequirePackage{abstract}
-    \renewcommand\abstractname{\bf{ABSTRACT}}
     \date{}
 
 
@@ -110,14 +108,18 @@
 % \RequirePackage{sectsty}
 % Advanced title and section header editing
 \RequirePackage{titlesec}
-    % \titleformat{\section}{\singlespace\centering\normalfont\Large\bfseries}{\thesection .}{1em}{}
-    % \titleformat{\subsection}{\singlespace\normalfont\large\itshape}{\thesubsection .}{1em}{}
-    % \titleformat{\subsubsection}{\singlespace\centering\normalfont\itshape}{\thesubsubsection .}{0.5em}{}
-    % These are set in jf.sty...?
-    % \renewcommand{\thesection}{\Roman{section}}
-    % \renewcommand{\thesubsection}{\Alph{subsection}}
-    % \renewcommand{\thetable }{\Roman{table}}
 
+
+% This gets run from ../ by the main file.
+% This breaks the caption package.
+\RequirePackage{./resources/jf}
+
+
+% Always indent after section heading
+\makeatletter
+\let\@afterindentfalse\@afterindenttrue
+\@afterindenttrue
+\makeatother
 
 \widowpenalty10000
 \clubpenalty10000

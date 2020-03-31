@@ -35,14 +35,14 @@ $quietly {
             stats(r2_p N, fmt(a2 %18.0gc) labels("Pseudo R$ ^2$" "Observations")) ///
             indicate(${max_indicate}, labels(Y N)) ///
             keep(X) ///
-            mgroup("CEO Ownership \%" "CEO No Unvested Equity" "Low NC Enforcement" "CEO Retirement Age",  ///
+            mgroup("Ownership \%" "Unvested Equity" "Enforcement" "Retirement Age",  ///
                             span pattern(1 0 1 0 1 0 1 0) ///
                             prefix("\mc{@span}{") ///
                             suffix("}") ///
                             erepeat(\cmidrule(lr){@span}) ///
                 ) ///
             substitute("\midrule" "" "X   " "\midrule X" ///
-                        "\toprule" "\toprule \multicolumn{9}{c}{\small  \textbf{Panel A}: CMR Inclusion and Contracting Frictions} \\ \midrule &\multicolumn{8}{c}{Dependent Variable = CMR Clause} \\ \addlinespace X = " ///
+                        "\toprule" "\toprule \multicolumn{9}{c}{\small  \textbf{Panel A}: CMR Inclusion and Contracting Frictions} \\ \midrule &\multicolumn{8}{c}{Dependent Variable = CMR Clause} \\ \addlinespace X = &\mc{2}{CEO } &\mc{2}{CEO No }&\mc{2}{Low NC } &\mc{2}{CEO }\\" ///
                        "Firm Controls" "\addlinespace \midrule Firm Controls")
     /* After writing out, add the \addlinespace \textit{Average Marginal Effect} to the line in front of the first &\textit */
 

@@ -28,7 +28,7 @@ $quietly {
     local labd4 "D4)  Vague position (unnamed, e.g. management)      "
     local labcovers_ceo "Covers CEO position                                 "
 
-    noisily display "{txt}Copy and paste the following into ${tdir}\tables\ia\table_ia_2_CMR_categories.tex:" _n
+    noisily display "{txt}Copy and paste the following into ${tdir}\tables\ia\table_ia_CMR_categories.tex:" _n
     noisily display "{txt}\begin{tabular}{l*{6}{D{.}{.}{-1}}}"
     noisily display "{txt}    \toprule"
     noisily display "{txt}    & \multicolumn{2}{c}{Loans} & \multicolumn{2}{c}{Firms} & \multicolumn{2}{c}{Banks} \\ %"

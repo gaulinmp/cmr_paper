@@ -64,7 +64,7 @@ $quietly {
                 span pattern(1 0 0 0 0 0))
 
     if $writeout ///
-    esttab using "${tdir}/ia/table_ia_11_cmr_severity_pricing.tex", replace ///
+    esttab using "${tdir}/ia/table_ia_cmr_severity_pricing.tex", replace ///
         booktabs type label compress nogaps nobase noomitted nomtitles noconst nonote ///
         ${stars} eqlabels(none) collabels(none) ///
         stats(r2_p N, fmt(${fmt2} ${fmtc}) labels("Pseudo R$ ^2$" "Observations")) ///

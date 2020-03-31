@@ -87,7 +87,7 @@ $quietly {
                 indicate("Loan/Syndicate Controls=ppricing" "Year = *year" "Lag Dep. Var.=l_d*", labels(Y N))
 
         if $writeout ///
-        esttab using "${tdir}/ia/table_ia_18_firm_outcome_loan_controls_`depvar'.tex", replace booktabs ///
+        esttab using "${tdir}/ia/table_ia_firm_outcome_loan_controls_`depvar'.tex", replace booktabs ///
             compress nogaps nobase noomitted nomtitles noconst nonote label ///
             ${stars} eqlabels(none) collabels(none) ///
             stats(r2 N, fmt(${fmt2} %8.0gc) labels("R$ ^2$" "Observations") ) ///

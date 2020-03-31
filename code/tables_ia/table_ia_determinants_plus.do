@@ -29,7 +29,7 @@ $quietly {
             indicate($max_indicate)
 
     if $writeout ///
-    esttab using "${tdir}/ia/table_ia_4_determinants_plus.tex", replace booktabs type ///
+    esttab using "${tdir}/ia/table_ia_determinants_plus.tex", replace booktabs type ///
         label compress nogaps nobase noomitted nomtitles noconst nonote ///
         cells("b(fmt(${fmt3}) star)" "t(par fmt(${fmt2}))"  `"margins_b(fmt(${fmt3}) par("\textit{" "}"))"') ///
         ${stars} ///

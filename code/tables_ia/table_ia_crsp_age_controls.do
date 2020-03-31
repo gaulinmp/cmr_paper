@@ -12,20 +12,19 @@ quietly { // load data
 
 $quietly {
 
-    /* Date-checking CEO founder turnover.
-    If the left office date is before dealactive date, they changed jobs before the
-    loan covered them, so the new CEO is no longer the founder. */
-    gen CEO_Founder_datecheck=CEO_Founder
-    replace CEO_Founder_datecheck = 0 if (leftofc < dealactivedate) & !missing(leftofc)
-    capture label variable CEO_Founder_datecheck "Founder CEO (alternative)"
-
+    /* Add Firm age, and subsample on > median age. */
+    sum crsp_age, d
+    local med_age=r(p50)
+    noisily display "Median age: `med_age'"
 
     eststo clear
 
-    runmainspec i.CEO_Founder, margins
-    runmainspec i.CEO_Founder_datecheck, margins
-    runmainspec i.CEO_Founder c.CG_PercInsider i.no_heir age age2 tenure new_ceo, margins
-    runmainspec i.CEO_Founder_datecheck c.CG_PercInsider i.no_heir age age2 tenure new_ceo, margins
+    runmainspec i.CEO_Founder                     crsp_age, margins debug
+    runmainspec c.CG_PercInsider                  crsp_age, margins debug
+    runmainspec i.no_heir age age2 tenure new_ceo crsp_age, margins debug
+    runmainspec i.CEO_Founder                     crsp_age if crsp_age > `med_age' & !missing(crsp_age), margins debug
+    runmainspec c.CG_PercInsider                  crsp_age if crsp_age > `med_age' & !missing(crsp_age), margins debug
+    runmainspec i.no_heir age age2 tenure new_ceo crsp_age if crsp_age > `med_age' & !missing(crsp_age), margins debug
 
     noisily ///
     esttab, label compress nogaps nobase noconst ///
@@ -36,20 +35,21 @@ $quietly {
             indicate("CEO Controls=age* tenure new_ceo " $min_indicate)
 
     if $writeout ///
-    esttab using "${tdir}/ia/table_ia_5_robust_human_capital.tex", replace ///
+    esttab using "${tdir}/ia/table_ia_crsp_age_controls.tex", replace ///
         booktabs type label nogaps nobase nomtitle nomtitles noomitted nocons ///
         ${stars} eqlabels(none) collabels(none) ///
         order(*Founder* *PercInsider *heir*) ///
         cells("b(fmt(${fmt3}) star)" "t(par fmt(${fmt2}))" ${tex_margins}) ///
         stats(r2_p N, fmt(${fmt2} ${fmtc}) labels("Pseudo R$ ^2$" "Observations")) ///
         indicate("CEO Controls=age* tenure new_ceo " ${max_indicate}, labels(Y N)) ///
-        mgroup("Dependent Variable = CMR Clause",  ///
-                span pattern(1 0 0 0 0 0 0 0 0 0 0) ///
+        mgroup("Full Sample" "Above Median Firm Age",  ///
+                span pattern(1 0 0 0 0 0 1 0 0 0 0 0) ///
                 prefix("\multicolumn{@span}{c}{") ///
                 suffix("}") ///
                 erepeat(\cmidrule(lr){@span}) ///
                 ) ///
-        substitute("=1" "" "\midrule" "" "Founder CEO     " "\midrule Founder CEO" ///
+        substitute("=1" "" "\midrule" "" "\toprule" "\toprule &\multicolumn{12}{c}{Dependent Variable = CMR Clause} \\\cmidrule(lr){2-13}" ///
+                   "Founder CEO     " "\midrule Founder CEO" ///
                    "CEO Controls" "\midrule CEO Controls")
 
 

@@ -23,13 +23,13 @@ $quietly {
     preserve
     sort ${depvar}
 
-    noisily display "Copy and paste the following into ${tdir}\tables\ia\table_ia_3_year_industry.tex:." _n
+    noisily display "Copy and paste the following into ${tdir}\tables\ia\table_ia_year_industry.tex:." _n
     noisily display "\begin{tabular}{lcccccc} \toprule
-    noisily display "\multicolumn{7}{c}{\small \centering \textbf{Panel A}: Year and Industry Distributions} \\ \midrule "
+    noisily display "\multicolumn{7}{c}{\small \centering {Panel A}: Year and Industry Distributions} \\ \midrule "
     noisily display "& \multicolumn{2}{c}{Firms (Packages) with CMR} & \multicolumn{2}{c}{Firms (Packages) without CMR} & & \\ "
     noisily display "& Frequency & Percent & Frequency & Percent & Difference & T-stat \\
     noisily display "\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
-    noisily display "\textbf{Year}& & & & & & \\"
+    noisily display "{Year}& & & & & & \\"
     noisily display "% Var,N CMR,% CMR,N noCMR,% noCMR,Difference,t-stat difference"
 
     foreach vv of numlist 1995/2015 {
@@ -62,7 +62,7 @@ $quietly {
     local flab11 "11–-REIT     "
     local flab12 "12–-Other    "
 
-    noisily display " \addlinespace \multicolumn{7}{l}{\textbf{Industry (FF 12)}} \\ "
+    noisily display " \addlinespace \multicolumn{7}{l}{{Industry (FF 12)}} \\ "
     noisily display "% All packages firm industry results:"
     noisily display "% Var,N CMR,% CMR,N noCMR,% noCMR,Difference,t-stat difference"
 
@@ -133,15 +133,14 @@ $quietly {
         ${stars}
 
     if $writeout ///
-    esttab using "${tdir}/ia/table_ia_3b_ceo_turnover_summary_stats.tex", replace type ///
+    esttab using "${tdir}/ia/table_ia_ceo_turnover_summary_stats.tex", replace type ///
         nomtitle nonumbers noobs booktabs label ///
         ${stars} substitute("%" "\%") ///
         cells( "N_1`d' mu_1`f' med_1`f' sd_1`f'") ///
-        collabels("N" "Mean" "Median" "Std. Dev.", ///
-                begin("\multicolumn{5}{c}{\small \centering \textbf{Panel B}: CEO Turnover Dataset -- Summary Statistics} \\ \midrule") ///
-                ) ///
-        varlabels(,blist(restrict "\multicolumn{5}{l}{\textbf{Firm Characteristics}} \\ " ///
-                         turnover "\addlinespace \multicolumn{5}{l}{\textbf{CEO Characteristics}} \\ "))
+        varlabels(,blist(restrict "\multicolumn{5}{l}{{Firm Characteristics}} \\ " ///
+                         turnover "\addlinespace \multicolumn{5}{l}{{CEO Characteristics}} \\ ")) ///
+        collabels("N" "Mean" "Median" "Std. Dev.") ///
+        prehead(" ") postfoot(" ")
     // end sumstats
 
 
@@ -179,13 +178,12 @@ $quietly {
         ${stars}
 
     if $writeout ///
-    esttab using "${tdir}/ia/table_ia_3c_ceo_turnover_cov_viol_summary_stats.tex", replace type ///
+    esttab using "${tdir}/ia/table_ia_ceo_turnover_cov_viol_summary_stats.tex", replace type ///
         nomtitle nonumbers noobs booktabs label ///
         ${stars} ///
         cells( "N_1`d' mu_1`f' med_1`f' sd_1`f'") ///
-        collabels("N" "Mean" "Median" "Std. Dev.", ///
-                begin("\multicolumn{5}{c}{\small \centering \textbf{Panel C}: CEO Turnover and Covenant Violation Test -- Summary Statistics} \\ \midrule") ///
-                )
+        collabels("N" "Mean" "Median" "Std. Dev.") ///
+        prehead(" ") postfoot(" ")
     // end sumstats
 
 
@@ -223,15 +221,15 @@ $quietly {
         ${stars}
 
     if $writeout ///
-    esttab using "${tdir}/ia/table_ia_3d_summary_stats.tex", replace type ///
+    esttab using "${tdir}/ia/table_ia_ia_summary_stats.tex", replace type ///
         nomtitle nonumbers noobs booktabs label ///
         ${stars} ///
         cells( "N_1`d' mu_1`f' med_1`f' sd_1`f'") ///
         collabels("N" "Mean" "Median" "Std. Dev.", ///
-                begin("\multicolumn{5}{c}{\small \centering \textbf{Panel D}: Internet Appendix Variables -- Summary Statistics}\\ \midrule") ///
+                begin("\multicolumn{5}{c}{\small \centering {Panel D}: Internet Appendix Variables}\\ \midrule") ///
                 ) ///
-        varlabels(,blist(has_cmr_ever "\multicolumn{5}{l}{\textbf{Firm Characteristics}} \\ " ///
-                        ${depvar} "\addlinespace \multicolumn{5}{l}{\textbf{Loan Characteristics}} \\ "))
+        varlabels(,blist(has_cmr_ever "\multicolumn{5}{l}{{Firm Characteristics}} \\ " ///
+                        ${depvar} "\addlinespace \multicolumn{5}{l}{{Loan Characteristics}} \\ "))
 
 
 
